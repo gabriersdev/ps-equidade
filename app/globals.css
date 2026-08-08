@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Momo+Trust+Display&family=Momo+Trust+Sans:wght@200..800&display=swap');
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "../style/styles.css";
+
+:root {
+  /* Colors */
+  --primary-color: #00470D;
+  --secondary-color: #CC0202;
+  --tertiary-color: #00941C;
+  --quaternary-color: #46B55B;
+  --black-color: #010101;
+  --white-color: #F6F6F6;
+}
+
+body {
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  color: var(--black-color);
+}
+
+/* Base custom styles based on requirements */
+.text-primary-custom { color: var(--primary-color); }
+.text-secondary-custom { color: var(--secondary-color); }
+.bg-primary-custom { background-color: var(--primary-color); }
+.bg-secondary-custom { background-color: var(--secondary-color); }
+
+/* Removing excessive rounded corners as requested */
+* {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,25 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-family: "Momo Trust Display", var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.font-momo-sans {
+    font-family: "Momo Trust Sans", var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.font-momo-display {
+    font-family: "Momo Trust Display", var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-family: "Momo Trust Sans", var(--font-inter), Arial, Helvetica, sans-serif !important;
+}
+
+.text-sm, .text-small {
+    font-size: 13px !important;
+}

@@ -1,4 +1,3 @@
-// TODO - verificar erro na execução do script
 import fs from "fs";
 import path from "path";
 import {execSync} from "child_process";

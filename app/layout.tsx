@@ -5,6 +5,7 @@ import {Header} from "@/components/header";
 import {Footer} from "@/components/footer";
 import {BootstrapClient} from "@/components/bootstrap-client";
 import "./globals.css";
+import React from "react";
 
 const inter = Inter({
   variable: "--font-inter",

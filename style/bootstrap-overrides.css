@@ -1,0 +1,106 @@
+/* Bootstrap overrides using global variables */
+
+/* ---------------- Text Colors ---------------- */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary {
+    color: var(--secondary-color) !important;
+}
+
+/* ---------------- Background Colors ---------------- */
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
+/* ---------------- Border Colors ---------------- */
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.border-secondary {
+    border-color: var(--secondary-color) !important;
+}
+
+/* ---------------- Buttons ---------------- */
+/* Primary Button */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:focus, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+    background-color: var(--tertiary-color) !important;
+    border-color: var(--tertiary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 148, 28, 0.5) !important;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:focus {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--white-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 71, 13, 0.5) !important;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: #A30202; /* slightly darker shade for hover */
+    border-color: #A30202;
+    color: var(--white-color);
+}
+
+.btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
+    background-color: #A30202 !important;
+    border-color: #A30202 !important;
+    box-shadow: 0 0 0 0.25rem rgba(204, 2, 2, 0.5) !important;
+}
+
+.btn-outline-secondary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-secondary:hover, .btn-outline-secondary:active, .btn-outline-secondary:focus {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: var(--white-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(204, 2, 2, 0.5) !important;
+}
+
+/* ---------------- Links ---------------- */
+a.text-primary:hover, a.text-primary:focus {
+    color: var(--tertiary-color) !important;
+}
+
+a.text-secondary:hover, a.text-secondary:focus {
+    color: #A30202 !important;
+}
+
+/* ---------------- Form Controls (Focus rings) ---------------- */
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+    border-color: var(--tertiary-color);
+    box-shadow: 0 0 0 0.25rem rgba(0, 148, 28, 0.25);
+}

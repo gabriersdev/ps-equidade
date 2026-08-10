@@ -76,7 +76,7 @@ export default function CalendarButtons({events}: { events: any[] }) {
             Gerando...
           </>
         ) : (
-          "Salvar datas no calendário"
+          "Salvar calendário na agenda"
         )}
       </button>
       <button onClick={downloadPDF} className="btn btn-secondary rounded-1" disabled={isPDFLoading}>
@@ -86,7 +86,7 @@ export default function CalendarButtons({events}: { events: any[] }) {
             Gerando...
           </>
         ) : (
-          "Baixar datas em PDF"
+          "Baixar calendário"
         )}
       </button>
     </div>

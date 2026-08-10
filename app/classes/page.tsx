@@ -1,4 +1,4 @@
-import { classes } from "@/resources/classes";
+import {classes} from "@/resources/classes";
 import ClassCard from "@/components/class-card";
 
 export default function AulasPage() {
@@ -8,7 +8,7 @@ export default function AulasPage() {
       
       <div>
         {classes.map((aula) => (
-          <ClassCard key={aula.id} aula={aula} />
+          <ClassCard key={aula.id} aula={aula}/>
         ))}
       </div>
     </div>

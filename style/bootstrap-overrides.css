@@ -1,6 +1,6 @@
 /* Bootstrap overrides using global variables */
 
-/* ---------------- Text Colors ---------------- */
+/* Text Colors */
 .text-primary {
     color: var(--primary-color) !important;
 }
@@ -9,7 +9,11 @@
     color: var(--secondary-color) !important;
 }
 
-/* ---------------- Background Colors ---------------- */
+.text-tertiary {
+    color: var(--tertiary-color) !important;
+}
+
+/* Background Colors */
 .bg-primary {
     background-color: var(--primary-color) !important;
 }
@@ -18,7 +22,11 @@
     background-color: var(--secondary-color) !important;
 }
 
-/* ---------------- Border Colors ---------------- */
+.bg-tertiary {
+    background-color: var(--tertiary-color) !important;
+}
+
+/* Border Colors */
 .border-primary {
     border-color: var(--primary-color) !important;
 }
@@ -27,7 +35,11 @@
     border-color: var(--secondary-color) !important;
 }
 
-/* ---------------- Buttons ---------------- */
+.border-tertiary {
+    border-color: var(--tertiary-color) !important;
+}
+
+/* Buttons */
 /* Primary Button */
 .btn-primary {
     background-color: var(--primary-color);
@@ -90,16 +102,44 @@
     box-shadow: 0 0 0 0.25rem rgba(204, 2, 2, 0.5) !important;
 }
 
-/* ---------------- Links ---------------- */
+/* Links */
+.link-primary,
+a.text-primary {
+    color: var(--primary-color) !important;
+    text-decoration-color: var(--primary-color);
+}
+
+.link-primary:hover, .link-primary:focus,
 a.text-primary:hover, a.text-primary:focus {
     color: var(--tertiary-color) !important;
+    text-decoration-color: var(--tertiary-color);
 }
 
+.link-secondary,
+a.text-secondary {
+    color: var(--secondary-color) !important;
+    text-decoration-color: var(--secondary-color);
+}
+
+.link-secondary:hover, .link-secondary:focus,
 a.text-secondary:hover, a.text-secondary:focus {
     color: #A30202 !important;
+    text-decoration-color: #A30202;
 }
 
-/* ---------------- Form Controls (Focus rings) ---------------- */
+.link-tertiary,
+a.text-tertiary {
+    color: var(--tertiary-color) !important;
+    text-decoration-color: var(--tertiary-color);
+}
+
+.link-tertiary:hover, .link-tertiary:focus,
+a.text-tertiary:hover, a.text-tertiary:focus {
+    color: var(--primary-color) !important;
+    text-decoration-color: var(--primary-color);
+}
+
+/* Form Controls (Focus rings) */
 .form-control:focus, .form-select:focus, .form-check-input:focus {
     border-color: var(--tertiary-color);
     box-shadow: 0 0 0 0.25rem rgba(0, 148, 28, 0.25);

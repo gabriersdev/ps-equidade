@@ -1,14 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import {renderText} from "@/libs/render-text";
-import type {Aula} from "@/resources/classes";
+import type {ClassContent} from "@/resources/classes";
 
-interface ClassCardProps {
-  aula: Aula;
+interface ClassCardLinkProps {
+  content: ClassContent;
 }
 
-function getFileIcon(type?: string) {
+export function getFileIcon(type?: string) {
   const t = type?.toUpperCase() || 'LINK';
   switch (t) {
     case 'PDF':
@@ -46,43 +44,23 @@ function getFileIcon(type?: string) {
   }
 }
 
-export default function ClassCard({aula}: ClassCardProps) {
+export default function ClassCardLink({content}: ClassCardLinkProps) {
   return (
-    <div className={"card px-3 py-4 rounded-1 mb-3"}>
-      <div className={"d-flex flex-column"}>
-        <h2 className="fs-3 m-0 p-0" style={{color: 'var(--secondary-color)', letterSpacing: "-0.5px"}}>
-          {aula.title}
-        </h2>
-        <span className={"text-danger"}>{renderText(aula.date)}</span>
-      </div>
-      <div className={"mt-2"}>
-        <p className={"m-0 p-0"}>
-          {aula.description}
-        </p>
-      </div>
-      {aula.contents.length > 0 && (
-        <div className="mt-3 d-flex flex-column gap-2">
-          {aula.contents.map((content, idx) => (
-            <Link
-              key={idx}
-              target="_blank"
-              href={content.url}
-              className={"btn btn-primary rounded-1 d-flex align-items-center gap-3"}
-            >
-              {getFileIcon(content.type)}
-              
-              <div className={"d-flex flex-column align-items-start"}>
-                <span>{content.title}</span>
-                
-                <div className={"text-sm d-flex gap-2 opacity-50"}>
-                  <span>{content.type}</span>
-                  <span>{renderText(content.size)}</span>
-                </div>
-              </div>
-            </Link>
-          ))}
+    <Link
+      target="_blank"
+      href={content.url}
+      className={"btn btn-primary rounded-1 d-flex align-items-center gap-3"}
+    >
+      {getFileIcon(content.type)}
+      
+      <div className={"d-flex flex-column align-items-start"}>
+        <span>{content.title}</span>
+        
+        <div className={"text-sm d-flex gap-2 opacity-50"}>
+          <span>{content.type}</span>
+          <span>{content.size && renderText(content.size)}</span>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    </Link>
+  )
 }

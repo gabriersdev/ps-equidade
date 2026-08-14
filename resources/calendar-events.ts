@@ -1,14 +1,15 @@
 export interface CalendarEvent {
   date: string;
   title: string;
+  id?: string;
 }
 
 export const events: CalendarEvent[] = [
-  {date: '27/06/2026', title: 'Aula 1 - Introdução'},
-  {date: '04/07/2026', title: 'Aula 2 - Scratch'},
-  {date: '11/07/2026', title: 'Aula 3 - Scratch'},
-  {date: '08/08/2026', title: 'Aula 4 - Scratch'},
-  {date: '22/08/2026', title: 'Aula 5 - Scratch'},
+  {date: '27/06/2026', title: 'Aula 1 - Introdução',},
+  {date: '04/07/2026', title: 'Aula 2 - Scratch', id: "scratch-aula-2"},
+  {date: '11/07/2026', title: 'Aula 3 - Scratch', id: "scratch-aula-3"},
+  {date: '08/08/2026', title: 'Aula 4 - Scratch', id: "scratch-aula-4"},
+  {date: '22/08/2026', title: 'Aula 5 - Scratch', id: "scratch-aula-5"},
   {date: '29/08/2026', title: 'Aula 6 - Lego/Robótica'},
   {date: '12/09/2026', title: 'Aula 7 - Lego/Robótica'},
   {date: '26/09/2026', title: 'Aula 8 - Lego/Robótica'},

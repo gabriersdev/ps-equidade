@@ -23,3 +23,45 @@ body {
 .text-sm, .text-small {
     font-size: 13px !important;
 }
+
+/* Line Clamp Utilities */
+[class*="line-clamp-"] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.line-clamp-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.line-clamp-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.line-clamp-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+.line-clamp-4 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+}
+
+.line-clamp-5 {
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+}
+
+.line-clamp-w-200 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: horizontal;
+    width: 200px;
+    max-width: 200px;
+    text-align: left !important;
+}

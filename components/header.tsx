@@ -1,8 +1,13 @@
+"use client";
+
 import Link from 'next/link';
 import {dictionary} from '@/resources/dictionary';
 import Image from "next/image";
+import {usePathname} from "next/navigation";
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <nav className="navbar navbar-expand-lg bg-white sticky-top border-bottom">
       <div className="container">
@@ -28,21 +33,28 @@ export function Header() {
         
         {/* Links */}
         <div className="collapse navbar-collapse" id="navbarContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
             {[
               [dictionary.header.aulas, '/classes'],
               [dictionary.header.calendario, '/calendar'],
               [dictionary.header.areaDoAluno, '/student-page'],
-            ].map(([label, href], i) => (
-              <li className="nav-item" key={i}>
-                <Link className="nav-link text-black fw-bold" href={href}>
-                  {label}
-                </Link>
-              </li>
-            ))}
+            ].map(([label, href], i) => {
+              const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+              return (
+                <li className="nav-item" key={i}>
+                  <Link 
+                    className={`nav-link fw-bold ${isActive ? 'text-success' : 'text-primary'}`} 
+                    href={href}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
     </nav>
   );
 }
+

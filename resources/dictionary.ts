@@ -32,3 +32,11 @@ export const dictionary = {
     poweredBy: "",
   }
 };
+
+export const breadcrumbTranslations: Record<string, string> = {
+  home: 'Início',
+  calendar: 'Calendário',
+  classes: 'Aulas',
+  class: 'Aula',
+  "student-page": "Área do aluno"
+};

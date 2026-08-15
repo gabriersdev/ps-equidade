@@ -54,7 +54,7 @@ export default function ClassCardLink({content}: ClassCardLinkProps) {
       {getFileIcon(content.type)}
       
       <div className={"d-flex flex-column align-items-start"}>
-        <span>{content.title}</span>
+        <span className={"line-clamp-1"}>{content.title}</span>
         
         <div className={"text-sm d-flex gap-2 opacity-50"}>
           <span>{content.type}</span>

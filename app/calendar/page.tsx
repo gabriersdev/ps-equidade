@@ -9,6 +9,7 @@ import {events} from '@/resources/calendar-events';
 import {basicClasses as classes} from '@/resources/classes-data';
 import Link from "next/link";
 import AnimatedComponents from "@/components/animated-component/animated-components";
+import {PageHeading} from "@/components/page-heading";
 
 export default function CalendarPage() {
   const [currentDate, setCurrentDate] = useState<moment.Moment | null>(null);
@@ -20,7 +21,7 @@ export default function CalendarPage() {
   return (
     <AnimatedComponents>
       <div className="container mt-5 mb-5">
-        <h1 className="mb-4" style={{color: 'var(--primary-color)', letterSpacing: "-0.5px"}}>Calendário</h1>
+        <PageHeading title="Calendário" />
         
         <div className="table-responsive">
           <table className="table table-striped table-hover mt-3 border">
@@ -38,7 +39,12 @@ export default function CalendarPage() {
               return (
                 <tr key={index}>
                   <td className="align-middle fw-bold" style={{opacity: isPast ? 0.5 : 1}}>{renderText(event.date)}</td>
-                  <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>{renderText(event.title)}</td>
+                  <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
+                    <div className={"d-flex align-items-center gap-1"}>
+                      {isPast ? <span className={"text-success"}><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="currentcolor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg></span> : <></>}
+                      <span>{renderText(event.title)}</span>
+                    </div>
+                  </td>
                   <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
                     {eventClass && eventClass.contents.length > 0 ? (
                       <Link

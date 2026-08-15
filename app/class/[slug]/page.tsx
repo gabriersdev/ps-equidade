@@ -5,6 +5,7 @@ import React from "react";
 import {Metadata} from "next";
 import AnimatedComponents from "@/components/animated-component/animated-components";
 import {renderText} from "@/libs/render-text";
+import { PageHeading } from "@/components/page-heading";
 
 export async function generateMetadata({params}: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const {slug} = await params;
@@ -32,10 +33,10 @@ export default async function ClassPage({params}: { params: Promise<{ slug: stri
   return (
     <AnimatedComponents>
       <div className="mt-5">
-        <hgroup className={"mb-4"}>
-          <h1 className="m-0 p-0" style={{color: 'var(--primary-color)', letterSpacing: "-0.5px"}}>{aula.title}</h1>
-          <span className={"text-success"}>{renderText(aula.date)}</span>
-        </hgroup>
+        <PageHeading
+          title={aula.title}
+          subtitle={<span className="text-success">{renderText(aula.date)}</span>}
+        />
         <ClassCard aula={{...aula, title: "Conteúdo da aula", date: ""}}/>
       </div>
     </AnimatedComponents>

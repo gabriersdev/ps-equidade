@@ -14,7 +14,7 @@ export function Header() {
         {/* Logo */}
         <Link className="navbar-brand d-flex align-items-start flex-column gap-1" href="/">
           {/* Logo placeholder - styling can be adjusted later */}
-          <Image src={"/logo-ps-geral-transparente.png"} alt={"Logo do Programa Sabará"} width={80} height={45} className={"object-cover"}/>
+          <Image src={"/logo-ps-geral-transparente.png"} alt={"Logo do Programa Sabará"} width={80} height={45} className={"object-cover"} loading={"eager"}/>
           <span className={"text-sm text-success"}>Equidade Racial</span>
         </Link>
         
@@ -42,8 +42,8 @@ export function Header() {
               const isActive = pathname === href || pathname?.startsWith(`${href}/`);
               return (
                 <li className="nav-item" key={i}>
-                  <Link 
-                    className={`nav-link fw-bold ${isActive ? 'text-success' : 'text-primary'}`} 
+                  <Link
+                    className={`nav-link fw-bold ${isActive ? 'text-success' : 'text-primary'}`}
                     href={href}
                   >
                     {label}

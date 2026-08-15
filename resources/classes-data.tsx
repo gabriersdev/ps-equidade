@@ -1,4 +1,5 @@
 import React from 'react';
+import {renderText} from "@/libs/render-text";
 
 export interface ClassContent {
   title: React.ReactNode;
@@ -19,7 +20,7 @@ export function formatDescription(text: string): React.ReactNode {
   if (!text) return text;
   const regex = /(revisão dos exercícios|exercícios práticos)/gi;
   const parts = text.split(regex);
-  
+
   return (
     <>
       {parts.map((part, i) =>
@@ -34,7 +35,7 @@ export const rawClasses = [
     id: "scratch-aula-5",
     title: "Scratch: aula 5",
     date: "22/08/2026",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    description: "Nesta aula, os alunos revisam estruturas condicionais (se/senão), variáveis e operadores aritméticos. Os exercícios práticos incluem a construção de uma calculadora de média com feedback de aprovação, uma simulação simples de caixa eletrônico para gerenciar saldo e saques, e uma calculadora básica funcional que realiza as quatro operações matemáticas com base na escolha do usuário.",
     contents: [
       {
         title: "Revisão dos exercícios e conteúdos apresentados em sala de aula",
@@ -46,7 +47,7 @@ export const rawClasses = [
     id: "scratch-aula-4",
     title: "Scratch: aula 4",
     date: "08/08/2026",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    description: "Nesta aula (A3 e Revisão A3), os alunos aprofundam o uso de lógica condicional, interação com o usuário e variáveis. Eles desenvolvem programas iterativos como verificadores de números pares e ímpares, jogos de adivinhação com números secretos, simuladores de semáforo com múltiplas condições (se/senão) e sistemas de verificação de senhas. Também exploram a mudança dinâmica de fantasias.",
     contents: [
       {
         title: "Revisão dos exercícios e conteúdos apresentados em sala de aula",
@@ -62,7 +63,7 @@ export const rawClasses = [
     id: "scratch-aula-3",
     title: "Scratch: aula 3",
     date: "11/07/2026",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    description: "Nesta aula, o foco é na animação de personagens, movimento e diálogos. Os alunos aprendem a usar blocos de movimento para fazer os atores andarem e girarem, blocos de aparência para trocar fantasias, exibir mensagens e esconder/mostrar personagens, além de blocos de som. Eles utilizam laços de repetição para animações simples e criam diálogos sincronizados entre dois personagens.",
     contents: [
       {
         title: "Revisão dos exercícios e conteúdos apresentados em sala de aula",
@@ -74,7 +75,7 @@ export const rawClasses = [
     id: "scratch-aula-2",
     title: "Scratch: aula 2",
     date: "04/07/2026",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    description: "Nesta aula, os alunos criam um projeto abrangente combinando conceitos fundamentais. Eles programam um personagem para aparecer, saudar o usuário, mover-se, girar, executar uma animação de troca de fantasias usando repetições e desaparecer. Um segundo personagem reage a cliques tocando sons e falando, culminando na criação de um pequeno diálogo interativo entre ambos os personagens.",
     contents: [
       {
         title: "Revisão dos exercícios e conteúdos apresentados em sala de aula",
@@ -87,7 +88,7 @@ export const rawClasses = [
 export const basicClasses: Aula[] = rawClasses
   .map(aula => ({
     ...aula,
-    description: formatDescription(aula.description),
+    description: renderText(aula.description),
     contents: aula.contents.map(content => ({
       ...content,
       title: formatDescription(content.title as string),

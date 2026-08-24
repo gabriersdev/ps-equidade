@@ -20,6 +20,14 @@ body {
     font-family: "Momo Trust Sans", var(--font-inter), Arial, Helvetica, sans-serif !important;
 }
 
+.font-inter {
+    font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.font-inter-tight {
+    font-family: "Inter Tight", var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
 .text-sm, .text-small {
     font-size: 13px !important;
 }
@@ -64,4 +72,9 @@ body {
     width: 200px;
     max-width: 200px;
     text-align: left !important;
+}
+
+.navbar-toggler {
+    border: 0;
+    padding: 0;
 }

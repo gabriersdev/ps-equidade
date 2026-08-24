@@ -1,6 +1,7 @@
 {
   "name": "ps-equidade",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +14,7 @@
     "cypress": "npx cypress run",
     "ci:test": "start-server-and-test dev http://localhost:5173 test",
     "test": "pwd",
-    "sync:version": "git pull && node scripts/sync-version.mjs && git add package.json && git commit -m \"build: update version\""
+    "sync:version": "git pull origin master && node scripts/sync-version.mjs && git add package.json && git commit -m \"build: update version\""
   },
   "dependencies": {
     "@semantic-release/changelog": "^7.0.0",

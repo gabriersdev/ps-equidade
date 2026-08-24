@@ -7,7 +7,7 @@ import {usePathname} from "next/navigation";
 
 export function Header() {
   const pathname = usePathname();
-
+  
   return (
     <nav className="navbar navbar-expand-lg bg-white sticky-top border-bottom">
       <div className="container">
@@ -34,6 +34,12 @@ export function Header() {
         {/* Links */}
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+            {
+              Array.from({length: 3}).map((_, i) => (
+                <li className="nav-item" key={i}></li>
+              ))
+            }
+            
             {[
               [dictionary.header.aulas, '/classes'],
               [dictionary.header.calendario, '/calendar'],

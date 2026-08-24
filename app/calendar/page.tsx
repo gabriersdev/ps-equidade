@@ -3,16 +3,20 @@
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
 import '@/resources/resources';
-import {renderText} from "@/libs/render-text";
 import CalendarButtons from '../../components/calendar-buttons';
 import {events} from '@/resources/calendar-events';
-import {basicClasses as classes} from '@/resources/classes-data';
-import Link from "next/link";
 import AnimatedComponents from "@/components/animated-component/animated-components";
 import {PageHeading} from "@/components/page-heading";
+import {appConfigs} from "@/resources/resources";
+import CalendarTable from "@/components/calendar-table";
+import {Button} from "react-bootstrap";
+import CalendarList from "@/components/calendar-list";
+
+moment.locale(appConfigs.locale);
 
 export default function CalendarPage() {
   const [currentDate, setCurrentDate] = useState<moment.Moment | null>(null);
+  const [viewType, setViewType] = useState("list");
   
   useEffect(() => {
     setCurrentDate(moment());
@@ -21,49 +25,22 @@ export default function CalendarPage() {
   return (
     <AnimatedComponents>
       <div className="container mt-5 mb-5">
-        <PageHeading title="Calendário" />
+        <div className={"d-flex align-items-center justify-content-between gap-3 flex-wrap"}>
+          <PageHeading title="Calendário"/>
+          
+          <div className={"d-flex align-items-center justify-content-center gap-2 mb-3"}>
+            <Button variant="success" size={"sm"} className={"rounded-1"} onClick={() => {
+              setViewType(viewType === "list" ? "calendar" : "list")
+            }}>
+              <span className={"text-small"}>Ver em {viewType === "list" ? "tabela" : "lista"}</span>
+            </Button>
+          </div>
+        </div>
         
-        <div className="table-responsive">
-          <table className="table table-striped table-hover mt-3 border">
-            <thead className="table-light">
-            <tr>
-              <th scope="col" style={{width: '150px'}}>Data</th>
-              <th scope="col">Assunto</th>
-              <th scope="col">Conteúdo</th>
-            </tr>
-            </thead>
-            <tbody>
-            {events.map((event, index) => {
-              const isPast = currentDate ? moment(event.date, 'DD/MM/YYYY').isBefore(currentDate, 'day') : false;
-              const eventClass = event.id ? classes.find(c => c.id === event.id) : null;
-              return (
-                <tr key={index}>
-                  <td className="align-middle fw-bold" style={{opacity: isPast ? 0.5 : 1}}>{renderText(event.date)}</td>
-                  <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
-                    <div className={"d-flex align-items-center gap-1"}>
-                      {isPast ? <span className={"text-success"}><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="currentcolor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg></span> : <></>}
-                      <span>{renderText(event.title)}</span>
-                    </div>
-                  </td>
-                  <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
-                    {eventClass && eventClass.contents.length > 0 ? (
-                      <Link
-                        href={`/class/${eventClass.date.split('/').reverse().join('')}`}
-                        className="link-primary gap-1 align-items-center text-decoration-none fw-medium text-ellipsis line-clamp-2"
-                      >
-                      <span className="text-break">
-                        Acesse o conteúdo da aula <b>{eventClass.title}</b>
-                      </span>
-                      </Link>
-                    ) : (
-                      <span className="text-muted">-</span>
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-            </tbody>
-          </table>
+        <div>
+          {
+            viewType === "list" ? <CalendarList events={events} currentDate={currentDate}/> : <CalendarTable events={events}/>
+          }
         </div>
         
         <CalendarButtons events={events}/>

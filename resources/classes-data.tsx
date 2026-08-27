@@ -42,6 +42,10 @@ export const rawClasses = [
         title: "Revisão dos exercícios e conteúdos apresentados em sala de aula",
         url: "/assets/classes/scratch/20260829-revisao.pdf"
       },
+      {
+        title: "Exercícios práticos realizados em sala de aula com Scratch",
+        url: "/assets/classes/scratch/20260829.pdf"
+      },
     ]
   },
   {

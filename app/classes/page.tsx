@@ -3,7 +3,7 @@ import ClassCard from "@/components/class-card/class-card";
 import {Metadata} from "next";
 import AnimatedComponents from "@/components/animated-component/animated-components";
 import {PageHeading} from "@/components/page-heading";
-import {Button, Dropdown, DropdownMenu, DropdownToggle, FormControl, InputGroup} from "react-bootstrap";
+import {Dropdown, DropdownMenu, DropdownToggle} from "react-bootstrap";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -11,17 +11,17 @@ export const metadata: Metadata = {
 };
 
 export default async function AulasPage({
-  searchParams,
-}: {
+                                          searchParams,
+                                        }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const resolvedParams = await searchParams;
   const sort = typeof resolvedParams.sort === 'string' ? resolvedParams.sort : 'date-desc';
-
+  
   const sortedClasses = [...classes].sort((a, b) => {
     const aDate = a.date.split('/').reverse().join('');
     const bDate = b.date.split('/').reverse().join('');
-
+    
     if (sort === 'date-asc') {
       return aDate.localeCompare(bDate);
     } else if (sort === 'title-asc') {
@@ -32,7 +32,7 @@ export default async function AulasPage({
     // default date-desc
     return bDate.localeCompare(aDate);
   });
-
+  
   return (
     <AnimatedComponents>
       <div className={"mt-5"}>

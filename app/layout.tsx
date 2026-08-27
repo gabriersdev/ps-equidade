@@ -6,10 +6,6 @@ import {Footer} from "@/components/footer";
 import {BootstrapClient} from "@/components/bootstrap-client";
 import "./globals.css";
 import React from "react";
-import Link from "next/link";
-import {breadcrumbTranslations} from "@/resources/dictionary";
-import {renderText} from "@/libs/render-text";
-import {Alert} from "react-bootstrap";
 import AlertInfo from "@/components/alert-info";
 
 const inter = Inter({

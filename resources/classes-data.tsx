@@ -2,7 +2,7 @@ import React from 'react';
 import {renderText} from "@/libs/render-text";
 
 export interface ClassContent {
-  title: React.ReactNode;
+  title: React.ReactNode | string;
   url: string;
   type?: string;
   size?: string;
@@ -36,7 +36,7 @@ export const rawClasses = [
     id: "scratch-aula-5",
     title: "Scratch: aula 5",
     date: "29/08/2026",
-    description: "Nesta aula, os alunos revisam estruturas condicionais (se/senão), variáveis e operadores aritméticos. Os exercícios práticos incluem a construção de uma calculadora de média com feedback de aprovação, uma simulação simples de caixa eletrônico para gerenciar saldo e saques, e uma calculadora básica funcional que realiza as quatro operações matemáticas com base na escolha do usuário.",
+    description: "Nesta aula, os alunos utilizam operadores e estruturas mais avançadas do Scratch e também revisam estruturas condicionais (se/senão), variáveis e operadores aritméticos. Os exercícios práticos incluem a construção de uma calculadora de média com feedback de aprovação, uma simulação simples de caixa eletrônico para gerenciar saldo e saques, e uma calculadora básica funcional que realiza as quatro operações matemáticas com base na escolha do usuário.",
     contents: [
       {
         title: "Revisão dos exercícios e conteúdos apresentados em sala de aula",

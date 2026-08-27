@@ -4,6 +4,7 @@ export const dictionary = {
     aulas: "Aulas",
     calendario: "Calendário",
     areaDoAluno: "Área do aluno",
+    resources: "Recursos",
   },
   home: {
     welcome: "Bem-vindo ao Portal",
@@ -30,7 +31,7 @@ export const dictionary = {
   },
   footer: {
     poweredBy: "",
-  }
+  },
 };
 
 export const breadcrumbTranslations: Record<string, string> = {
@@ -38,5 +39,6 @@ export const breadcrumbTranslations: Record<string, string> = {
   calendar: 'Calendário',
   classes: 'Aulas',
   class: 'Aula',
-  "student-page": "Área do aluno"
+  "student-page": "Área do aluno",
+  resources: "Recursos",
 };

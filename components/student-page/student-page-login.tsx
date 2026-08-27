@@ -185,7 +185,9 @@ export default function StudentPageLogin() {
             <span className={"text-danger text-sm d-block mt-1 text-center"}>{submitError}</span>
           )}
           
-          <Link href={"#0"} className={"text-center text-sm text-decoration-none text-primary"}>Não consigo entrar</Link>
+          <div className={"d-none"}>
+            <Link href={"#0"} className={"text-center text-sm text-decoration-none text-primary"}>Não consigo entrar</Link>
+          </div>
         </div>
       </div>
     </Form>

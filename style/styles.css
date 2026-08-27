@@ -78,3 +78,7 @@ body {
     border: 0;
     padding: 0;
 }
+
+.bg-blue {
+    background-color: #161FFE;
+}

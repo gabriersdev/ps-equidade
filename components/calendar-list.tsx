@@ -16,26 +16,27 @@ export default function CalendarList({events, currentDate}: CalendarListProps) {
         <thead className="table-light">
         <tr>
           <th scope="col" style={{width: '150px'}}>Data</th>
-          <th scope="col" style={{width: '160px'}}>Horário</th>
+          <th scope="col" style={{width: '160px'}} className={"d-none d-md-table-cell"}>Horário</th>
           <th scope="col">Assunto</th>
           <th scope="col">Conteúdo</th>
         </tr>
         </thead>
         
         <tbody>
-        {events.map((event, index) => {
+        {events.map((event, index, self) => {
           const isPast = currentDate ? moment(event.date, 'DD/MM/YYYY').isBefore(currentDate, 'day') : false;
           const eventClass = event.id ? classes.find(c => c.id === event.id) : null;
           return (
             <tr key={index}>
               <td className="align-middle fw-bold" style={{opacity: isPast ? 0.5 : 1}}>{renderText(event.date)}</td>
-              <td style={{opacity: isPast ? 0.5 : 1}}>
+              <td className={"align-middle d-none d-md-table-cell"} style={{opacity: isPast ? 0.5 : 1}}>
                 {moment(`2020-01-01T${event.timeInit}`).format("HH:mm")} - {moment(`2020-01-01T${event.timeFinish}`).format("HH:mm")}
               </td>
               <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
-                <div className={"d-flex align-items-center gap-1"}>
+                <div className={"d-flex align-items-center gap-1 flex-wrap"}>
                   {isPast ? <span className={"text-success"}><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="currentcolor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg></span> : <></>}
                   <span>{renderText(event.title)}</span>
+                  {(moment(`2020-01-01T${event.timeFinish}`).diff(moment(`2020-01-01T${event.timeInit}`), "minutes") >= (60 * 2.5) && self.length - 1 !== index) && <span style={{paddingTop: "0.125rem", paddingBottom: "0.125rem"}} className={"bg-success-subtle fw-normal text-sm rounded-1 px-2 text-success"}>horário extendido</span>}
                 </div>
               </td>
               <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>

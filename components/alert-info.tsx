@@ -20,8 +20,8 @@ export default function AlertInfo() {
       <section
         className={"mb-4 px-3 py-4 rounded-1 bg-blue d-flex gap-3 flex-column"}
         style={{
-          backgroundColor: "#161FFE",
-          backgroundImage: "url(/bg-banner.png)",
+          backgroundColor: "#123597",
+          // backgroundImage: "url(/bg-banner.png)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat"
@@ -29,7 +29,7 @@ export default function AlertInfo() {
       >
         <div className="d-flex align-items-center w-full justify-content-between">
           <div>
-            <span className={"fw-normal text-sm rounded-1 text-warning"}>aviso</span>
+            <span className={"fw-normal text-sm rounded-1 text-white"}>aviso</span>
           </div>
           <Button variant={"danger"} onClick={() => setShow(false)} className={"bg-transparent border-0 p-0 m-0"}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">

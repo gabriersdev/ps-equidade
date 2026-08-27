@@ -6,6 +6,11 @@ import {Footer} from "@/components/footer";
 import {BootstrapClient} from "@/components/bootstrap-client";
 import "./globals.css";
 import React from "react";
+import Link from "next/link";
+import {breadcrumbTranslations} from "@/resources/dictionary";
+import {renderText} from "@/libs/render-text";
+import {Alert} from "react-bootstrap";
+import AlertInfo from "@/components/alert-info";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,6 +35,7 @@ export default function RootLayout({
     <body className="d-flex flex-column min-vh-100">
     <Header/>
     <main className="container py-4 flex-grow-1">
+      <AlertInfo/>
       {children}
     </main>
     <Footer/>

@@ -1,5 +1,5 @@
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import {cookies} from "next/headers";
+import {NextResponse} from "next/server";
 
 // Função para normalizar nome e sobrenome (ex: "Paulo Silva", "PAULO SILVA" -> "paulo.silva")
 const normalizeInputUsername = (name: string) => {
@@ -41,48 +41,48 @@ const isValidDateStr = (dateStr: string) => {
 
 export async function POST(request: Request) {
   try {
-    const { username, password } = await request.json();
-
+    const {username, password} = await request.json();
+    
     if (!username || !password) {
       return NextResponse.json(
-        { success: false, message: "Nome e data de nascimento são obrigatórios" },
-        { status: 400 }
+        {success: false, message: "Nome e data de nascimento são obrigatórios"},
+        {status: 400}
       );
     }
-
+    
     if (!isValidName(username)) {
       return NextResponse.json(
-        { success: false, message: "Insira nome e sobrenome válidos" },
-        { status: 400 }
+        {success: false, message: "Insira nome e sobrenome válidos"},
+        {status: 400}
       );
     }
-
+    
     if (!isValidDateStr(password)) {
       return NextResponse.json(
-        { success: false, message: "Insira uma data de nascimento válida" },
-        { status: 400 }
+        {success: false, message: "Insira uma data de nascimento válida"},
+        {status: 400}
       );
     }
-
+    
     const normalizedUser = normalizeInputUsername(username);
     const normalizedPass = normalizePassword(password);
-
+    
     const credentials = process.env.CREDENTIALS || "";
     const users = credentials.split(";").filter(Boolean);
-
+    
     for (const user of users) {
       // Formato atualizado: firstname.lastname=birthdate=id
       const [expectedUsername, expectedPassword, expectedId] = user.split("=");
       
       const envUser = normalizeEnvUsername(expectedUsername || "");
       const envPass = normalizePassword(expectedPassword || "");
-
+      
       // Compara os valores normalizados com o que está no .env ignorando case/formatações extras
       if (normalizedUser === envUser && normalizedPass === envPass) {
         const cookieStore = await cookies();
         
-        const cookieOptions = { 
-          httpOnly: true, 
+        const cookieOptions = {
+          httpOnly: true,
           secure: process.env.NODE_ENV === "production",
           path: "/",
           maxAge: 60 * 60 * 24 * 7 // 1 semana
@@ -95,19 +95,19 @@ export async function POST(request: Request) {
           cookieStore.set("student_id", expectedId.trim(), cookieOptions);
         }
         
-        return NextResponse.json({ success: true });
+        return NextResponse.json({success: true});
       }
     }
-
+    
     return NextResponse.json(
-      { success: false, message: "Credenciais inválidas" },
-      { status: 401 }
+      {success: false, message: "Credenciais inválidas"},
+      {status: 401}
     );
   } catch (error) {
     console.error("Login error:", error);
     return NextResponse.json(
-      { success: false, message: "Erro interno no servidor" },
-      { status: 500 }
+      {success: false, message: "Erro interno no servidor"},
+      {status: 500}
     );
   }
 }

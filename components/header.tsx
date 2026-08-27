@@ -43,6 +43,7 @@ export function Header() {
             {[
               [dictionary.header.aulas, '/classes'],
               [dictionary.header.calendario, '/calendar'],
+              [dictionary.header.resources, '/resources'],
               [dictionary.header.areaDoAluno, '/student-page'],
             ].map(([label, href], i) => {
               const isActive = pathname === href || pathname?.startsWith(`${href}/`);

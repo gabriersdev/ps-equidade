@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 function getGitTags() {
   try {
-    execSync("git pull", {encoding: "utf8"});
+    execSync("git fetch --tags", {encoding: "utf8"});
     const output = execSync("git tag", {encoding: "utf8"});
     return output
       .split("\n")

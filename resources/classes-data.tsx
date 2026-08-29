@@ -46,6 +46,14 @@ export const rawClasses = [
         title: "Exercícios práticos realizados em sala de aula com Scratch",
         url: "/assets/classes/scratch/20260829.pdf"
       },
+      {
+        title: "Desafio - Imagem 1",
+        url: "/assets/support/IMG-20260829-E1.jpeg"
+      },
+      {
+        title: "Desafio - Imagem 2",
+        url: "/assets/support/IMG-20260829-E2.jpeg"
+      }
     ]
   },
   {

@@ -3,14 +3,15 @@
 O projeto utiliza Next.js com App Router.
 
 ## Estrutura de Componentes
-Seguindo o design limpo:
-- `header.tsx`: Navegação principal.
-- `footer.tsx`: Rodapé.
-- `sidebar.tsx`: Coluna lateral da home com tópicos e posts em destaque.
-- `featured-post.tsx`: Post grande da página inicial.
-- `post-card.tsx`: Lista de posts menores.
-- `newsletter.tsx`: Bloco de conversão de emails.
-- `share-button.tsx`: Botão de compartilhamento que utiliza Web Share API ou a área de transferência.
+Seguindo o design limpo, os componentes estão divididos por suas responsabilidades:
+- **`header.tsx` e `footer.tsx`**: Componentes globais que estruturam o layout principal (cabeçalho e rodapé).
+- **`page-heading.tsx`**: Agregador de formatação para os títulos das páginas, processando a URL e gerando a trilha de navegação (*breadcrumb*).
+- **`bootstrap-client.tsx`**: Componente cliente responsável por carregar dinamicamente o JavaScript do Bootstrap.
+- **Componentes de Calendário** (`calendar-buttons.tsx`, `calendar-list.tsx`, `calendar-table.tsx`): Conjunto de componentes para exibir interativamente os dados da agenda e calendário.
+- **Componentes baseados em Card** (`class-card`, `resource-card`, `base-card`): Componentes reutilizáveis para exibir informações encapsuladas (como aulas e links úteis) no formato de cards.
+- **`alert-info.tsx`**: Componente para renderização de mensagens de notificação e alertas ao usuário.
+- **`animated-component`**: Componente envelopador para transições visuais e efeitos de animação ao montar elementos na tela.
+- **`student-page`**: Agrupa componentes exclusivos do painel e controle de autenticação do portal do aluno.
 
 ## Estilização
 Utilizamos TailwindCSS. A formatação visual dos conteúdos MDX não utiliza plugins externos como o `@tailwindcss/typography`. Em vez disso, a renderização do MDX é envelopada pela classe `markdown-content` em `app/[slug]/page.tsx`. Todas as definições de tipografia, espaçamento de parágrafos, cores de cabeçalhos, listas, imagens e blocos de código correspondentes a essa classe encontram-se estritamente definidas de forma manual no arquivo global `style/styles.css`, para manter um controle apurado do *design system*.
@@ -20,16 +21,6 @@ Utilizamos TailwindCSS. A formatação visual dos conteúdos MDX não utiliza pl
 - `resources/dictionary.ts`: Arquivo centralizado que armazena todos os pequenos textos (strings) da interface de usuário (UI). Desacopla as *hardcoded strings* dos componentes React, garantindo que o sistema possua infraestrutura nativa e imediata para internacionalização e localização (i18n).
 - **Conteúdos Base em Markdown**: Textos extensos (como os da página *About*, *Privacy* e o guia no rodapé dos posts) foram isolados em arquivos `.md` puros (`about.md`, `privacy.md`, `guide.md`) dentro da pasta `resources`. Diferente dos posts regulares, esses arquivos não possuem metadados (Frontmatter) e são lidos sincronicamente no servidor via módulo nativo `fs` (ex: `fs.readFileSync`), sendo então injetados dinamicamente no componente `MDXRemote`.
 - **Objetivo Arquitetural**: A existência desta pasta e seus respectivos arquivos evita o uso de valores "chumbados" no código. Qualquer alteração de idioma, formatações base, metadados ou páginas estáticas reflete instantaneamente em toda a aplicação sem a necessidade de modificar múltiplos arquivos da interface visual.
-
-## Geração Automática de Feeds (RSS)
-- `app/rss.xml/route.ts`: Rota de API (Route Handler) nativa do Next.js responsável por interceptar requisições ao arquivo `rss.xml`.
-- **Dinamicidade**: Lê os conteúdos MDX através de `getPosts()` e os metadados globais em `resources.ts`, gerando o arquivo XML do RSS Feed na versão 2.0 dinamicamente, mantendo o feed sempre atualizado com as novas publicações e dados do autor sem a necessidade de compilação estática manual prévia.
-- **Tratamento de Datas**: O parser de datas (`moment`) recebe um formato de entrada explícito (`DD MMM YYYY`) correspondente aos metadados dos posts para evitar alertas de *fallback* e inconsistências de conversão na engine de build do Next.js.
-
-## Geração Automática de Sitemap (SEO)
-- `app/sitemap.ts`: Rota especial do ecossistema Next.js (`MetadataRoute.Sitemap`) que intercepta requisições para `sitemap.xml`.
-- **Funcionamento**: A função de renderização coleta programaticamente todas as postagens publicadas através do método `getPosts()` e combina suas URLs (junto a rotas estáticas como a homepage e `/blog`) retornando um objeto iterável estruturado. O Next.js então formata esse retorno nativamente para o padrão XML de SEO utilizado pelos indexadores globais.
-- **Tratamento de Datas**: Assim como na geração de RSS, a extração do `lastModified` especifica explicitamente o formato `DD MMM YYYY` ao transformar a string do arquivo MDX, prevenindo o comportamento padrão instável do construtor de `Date` que gera avisos de *deprecation*.
 
 ## Integração de UI (Portal do Aluno)
 - **Framework CSS**: Para as áreas focadas em portal (Aulas, Calendário, Área do Aluno), a aplicação utiliza primariamente o **Bootstrap 5** (classes utilitárias e estruturais nativas, sem jQuery).

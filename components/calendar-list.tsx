@@ -37,6 +37,7 @@ export default function CalendarList({events, currentDate}: CalendarListProps) {
                   {isPast ? <span className={"text-success"}><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="currentcolor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg></span> : <></>}
                   <span>{renderText(event.title)}</span>
                   {(moment(`2020-01-01T${event.timeFinish}`).diff(moment(`2020-01-01T${event.timeInit}`), "minutes") >= (60 * 2.5) && self.length - 1 !== index) && <span style={{paddingTop: "0.125rem", paddingBottom: "0.125rem"}} className={"bg-success-subtle fw-normal text-sm rounded-1 px-2 text-success"}>horário extendido</span>}
+                  {event.title.toLowerCase().includes("aula extra") ? (<span style={{paddingTop: "0.125rem", paddingBottom: "0.125rem", color: "#2631FF"}} className={"bg-primary-subtle fw-normal text-sm rounded-1 px-2"}>aula extra</span>) : ""}
                 </div>
               </td>
               <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>

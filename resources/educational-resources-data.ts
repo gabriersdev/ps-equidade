@@ -18,5 +18,15 @@ export const educationalResourcesData: ResourceCardProps[] = [
         url: "https://scratch.mit.edu/join",
       }
     ]
+  },
+  {
+    title: "Robótica - Simulador de robôs",
+    description: "",
+    links: [
+      {
+        title: "GEARSBOT - Simulador de robôs",
+        url: "https://gears.aposteriori.com.sg/"
+      }
+    ]
   }
 ]

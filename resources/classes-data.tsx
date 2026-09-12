@@ -33,6 +33,34 @@ export function formatDescription(text: string): React.ReactNode {
 
 export const rawClasses = [
   {
+    id: "robotica-aula-7",
+    title: "Robótica: aula 7",
+    date: "12/09/2026",
+    description: "Nesta aula, os alunos experimentaram os robôs LEGO e realizaram desafios de lógica utilizando os blocos do software MINDSTORMS EV3 Classroom e executando os Projetos nos próprios robôs.",
+    contents: [
+      {
+        title: "Projetos do Grupo #1 - Ana Julia, Eduarda, Isabelly, Julia Vilela e Emanuelle",
+        url: "https://raw.githubusercontent.com/gabriersdev/ps-equidade/refs/heads/master/public/assets/classes/projects/grupo-1.zip",
+      },
+      {
+        title: "Projetos do Grupo #2 - Arthur, Heitor, Iago e Keven",
+        url: "https://raw.githubusercontent.com/gabriersdev/ps-equidade/refs/heads/master/public/assets/classes/projects/grupo-2.zip",
+      },
+      {
+        title: "Projetos do Grupo #3 - Alicia, Ana Julia, Geovanna, Sophia e Thifany",
+        url: "https://raw.githubusercontent.com/gabriersdev/ps-equidade/refs/heads/master/public/assets/classes/projects/grupo-3.zip",
+      },
+      {
+        title: "Projetos do Grupo #4 - Bernardo, Marcos, Samuel e Vitor",
+        url: "https://raw.githubusercontent.com/gabriersdev/ps-equidade/refs/heads/master/public/assets/classes/projects/grupo-4.zip",
+      },
+      {
+        title: "GEARSBOT - Simulador de robôs",
+        url: "https://gears.aposteriori.com.sg/"
+      },
+    ]
+  },
+  {
     id: "scratch-aula-5",
     title: "Scratch: aula 5",
     date: "29/08/2026",

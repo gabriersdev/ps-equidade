@@ -36,7 +36,7 @@ export function getFileIcon(type?: string) {
       );
     default:
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-window-fullscreen" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" className="bi bi-window-fullscreen" viewBox="0 0 16 16">
           <path d="M3 3.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m1.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
           <path d="M.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5zM1 5V2h14v3zm0 1h14v8H1z"/>
         </svg>
@@ -49,16 +49,18 @@ export default function ClassCardLink({content}: ClassCardLinkProps) {
     <Link
       target="_blank"
       href={content.url}
-      className={"btn btn-primary rounded-1 d-flex align-items-center gap-3"}
+      className={"btn btn-primary rounded-1 d-flex align-items-center gap-3 text-start"}
     >
-      {getFileIcon(content.type)}
+      <div className="flex-shrink-0 d-flex">
+        {getFileIcon(content.type)}
+      </div>
       
-      <div className={"d-flex flex-column align-items-start"}>
+      <div className={"d-flex flex-column align-items-start overflow-hidden"}>
         <span className={"line-clamp-1"}>{content.title}</span>
         
         <div className={"text-sm d-flex gap-2 opacity-50"}>
-          <span>{content.type}</span>
-          <span>{content.size && renderText(content.size)}</span>
+          <span>{content.type || 'Link externo'}</span>
+          {content.size && <span>{renderText(content.size)}</span>}
         </div>
       </div>
     </Link>

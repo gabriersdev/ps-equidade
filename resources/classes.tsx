@@ -6,7 +6,7 @@ export type {Aula, ClassContent};
 
 function getFileInfo(url: string): { type: string; size: string } {
   try {
-    if (!url.startsWith('/') || !url.startsWith('.')) return {type: 'Link externo.', size: 'Clique para abrir'};
+    if (!url.startsWith('/')) return {type: 'Link externo', size: ''};
     
     const ext = path.extname(url).replace('.', '').toUpperCase();
     const filePath = path.join(process.cwd(), 'public', url);

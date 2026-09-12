@@ -41,3 +41,8 @@ A navegação deve sempre conter os itens:
 ## Regras de Navegação e Contexto (Breadcrumbs)
 - **Tradução de Termos**: As trilhas de navegação (*breadcrumbs*) devem obrigatoriamente traduzir os segmentos literais das rotas (slugs em inglês) para o idioma local (ex: "/classes" torna-se "Aulas"), utilizando o dicionário global centralizado da aplicação.
 - **Formatação de Datas em Slugs**: Quando a página for acessada via URL de slug dinâmico correspondente à data de uma aula (formato literal `AAAAMMDD`, ex: `20260704`), a interface deve interceptar e mascarar esta string na UI, exibindo-a formatada logicamente como data (`DD/MM/AAAA`) no *breadcrumb* da página (ex: `04/07/2026`), melhorando a legibilidade e garantindo clareza proativa ao aluno.
+
+## Regras de Avisos (Alerts)
+- **Centralização de Avisos**: Todos os avisos da plataforma devem ser definidos e consumidos a partir do arquivo de recursos estáticos `resources/alerts-data.ts`, contendo o ID único, título, conteúdo e a data limite de exibição.
+- **Validade do Aviso**: Avisos com a data de validade (`datetimeMaxShow`) expirada em relação ao momento do acesso (`moment()`) são invalidados e não devem ser exibidos em nenhuma circunstância.
+- **Memorização de Ocultamento**: O usuário possui a capacidade de dispensar um aviso. Essa ação armazena o ID daquele aviso no `localStorage` do dispositivo e inibe a exibição deste em acessos futuros. O salvamento respeita obrigatoriamente a regra de nomenclatura de chaves no projeto.

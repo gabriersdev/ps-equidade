@@ -13,7 +13,7 @@ export const events: CalendarEvent[] = [
   {date: '08/08/2026', title: 'Aula 4 - Scratch', id: "scratch-aula-4", timeInit: "09:00:00", timeFinish: "11:00:00",},
   {date: '29/08/2026', title: 'Aula 5 - Scratch', id: "scratch-aula-5", timeInit: "09:00:00", timeFinish: "11:00:00",},
   {date: '12/09/2026', title: 'Aula 7 - Lego/Robótica', id: "robotica-aula-7", timeInit: "09:00:00", timeFinish: "11:30:00",},
-  {date: '19/09/2026', title: 'Aula Extra - Lego/Robótica', timeInit: "09:00:00", timeFinish: "11:00:00",},
+  {date: '19/09/2026', title: 'Aula Extra - Lego/Robótica', id: "robotica-aula-8", timeInit: "09:00:00", timeFinish: "11:00:00",},
   {date: '26/09/2026', title: 'Aula 8 - Lego/Robótica', timeInit: "09:00:00", timeFinish: "11:30:00",},
   {date: '03/10/2026', title: 'Aula 9 - Oficina Segurança Digital - METIS', timeInit: "09:00:00", timeFinish: "11:30:00",},
   {date: '24/10/2026', title: 'Aula 10 - Cinema Comentado', timeInit: "09:00:00", timeFinish: "11:30:00",},

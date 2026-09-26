@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import {renderText} from "@/libs/render-text";
 
 interface BaseCardProps {
   title: ReactNode;
@@ -12,11 +13,11 @@ export default function BaseCard({ title, subtitle, description, children }: Bas
     <div className={"card px-3 py-4 rounded-1 mb-3"}>
       <div className={"d-flex flex-column"}>
         <h2 className="fs-3 m-0 p-0" style={{color: 'var(--secondary-color)', letterSpacing: "-0.5px"}}>
-          {title}
+          {renderText(title)}
         </h2>
         {subtitle && (
           <div className={"d-flex align-items-center gap-1"}>
-            {subtitle}
+            {renderText(subtitle)}
           </div>
         )}
       </div>
@@ -24,7 +25,7 @@ export default function BaseCard({ title, subtitle, description, children }: Bas
       {description && (
         <div className={"mt-3"}>
           <p className={"m-0 p-0 text-body"}>
-            {description}
+            {renderText(description)}
           </p>
         </div>
       )}

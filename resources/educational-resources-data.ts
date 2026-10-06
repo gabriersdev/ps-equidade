@@ -26,6 +26,10 @@ export const educationalResourcesData: ResourceCardProps[] = [
       {
         title: "GEARSBOT - Simulador de robôs",
         url: "https://gears.aposteriori.com.sg/"
+      },
+      {
+        title: "Manuais de montagem do LEGO EV3 - EV3 Lessons",
+        url: "https://ev3lessons.com/pt/RobotDesigns.html"
       }
     ]
   }

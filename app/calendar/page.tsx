@@ -39,7 +39,7 @@ export default function CalendarPage() {
         
         <div>
           {
-            viewType === "list" ? <CalendarList events={events} currentDate={currentDate}/> : <CalendarTable events={events}/>
+            viewType === "list" ? <CalendarList events={events} currentDate={currentDate}/> : <CalendarTable events={events} currentDate={currentDate}/>
           }
         </div>
         

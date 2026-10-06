@@ -8,9 +8,10 @@ import {renderText} from "@/libs/render-text";
 
 interface CalendarViewProps {
   events: CalendarEvent[];
+  currentDate: moment.Moment | null;
 }
 
-export default function CalendarTable({events}: CalendarViewProps) {
+export default function CalendarTable({events, currentDate}: CalendarViewProps) {
   const dates = events.map(e => moment(e.date, 'DD/MM/YYYY'));
   
   const minDate = dates.length > 0 ? moment.min(dates).startOf('month') : moment().startOf('month');
@@ -70,6 +71,8 @@ export default function CalendarTable({events}: CalendarViewProps) {
                 const dayEvents = events.filter(e => moment(e.date, 'DD/MM/YYYY').isSame(date, 'day'));
                 const isToday = moment().isSame(date, 'day');
                 
+                const isPast = currentDate ? date.isBefore(currentDate, 'day') : false;
+                
                 return (
                   <td
                     key={j}
@@ -86,8 +89,13 @@ export default function CalendarTable({events}: CalendarViewProps) {
                             <span className={"text-small text-balance font-inter"}>{renderText(evt.title)}</span>
                           </Tooltip>
                         }>
-                          <div className="bg-success text-white p-1 px-2 rounded-1 line-clamp-3" style={{fontSize: '1rem', lineHeight: '1.2'}}>
-                            <span className="fw-bold me-1 d-block">{evt.timeInit.substring(0, 5)}</span>
+                          <div className="bg-success text-white p-1 px-2 rounded-1 line-clamp-2" style={{fontSize: '1rem', lineHeight: '1.2', opacity: isPast ? 0.5 : 1}}>
+                            <span className="fw-bold me-1 d-flex align-items-center gap-1">
+                              {evt.timeInit.substring(0, 5)}
+                              {isPast && (
+                                <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="currentcolor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                              )}
+                            </span>
                             <span className={"mt-1 d-block"}>{renderText(evt.title)}</span>
                           </div>
                         </OverlayTrigger>

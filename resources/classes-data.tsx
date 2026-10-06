@@ -34,7 +34,45 @@ export function formatDescription(text: string): React.ReactNode {
 
 export const rawClasses = [
   {
+    id: "oficina-hibrida-9",
+    title: "Oficina de Cybersegurança (METIS) + Lego/Robótica",
+    description: "Nesta aula, os alunos foram apresentados ao projeto METIS – Mulheres em Ciências Exatas e participaram de uma atividade dinâmica, na qual foram desafiados a identificar golpes e situações de risco presentes no cotidiano. Após a oficina, os alunos deram continuidade às atividades com a programação dos robôs LEGO. A seguir, são apresentados os roteiros das missões 1, 2 e 3, acompanhados da explicação sobre o contexto de cada situação, como identificar o golpe e a resolução de cada uma das missões, além de cartilhas sobre Segurança Digital produzidas pelo NIC.br.",
+    contents: [
+      {
+        title: "Oficina METIS - Missão 1 - Phishing via SMS",
+        url: "/assets/classes/cybersecurity/missao-1-phishing-via-SMS.pdf",
+      },
+      {
+        title: "Oficina METIS - Missão 2 - Phishing por e-mail",
+        url: "/assets/classes/cybersecurity/missao-2-phishing-por-e-mail.pdf",
+      },
+      {
+        title: "Oficina METIS - Missão 3 - Golpe da Falsa Central + Motoqueiro do banco",
+        url: "/assets/classes/cybersecurity/missao-3-golpe-da-falsa-central+motoqueiro-do-banco.pdf",
+      },
+      {
+        title: "Guia \"Internet Segura: Divirta-se e aprenda a usar a internet de forma segura!\"",
+        url: "https://internetsegura.br/pdf/guia-internet-segura.pdf",
+      },
+      {
+        title: "Guia \"Internet Segura\" para os pais: A sua participação é muito importante!",
+        url: "https://internetsegura.br/pdf/guia-internet-segura-pais.pdf",
+      },
+    ]
+  },
+  {
     id: "robotica-aula-8",
+    title: "Robótica: aula 8",
+    description: "Nesta aula, os alunos, organizados em grupos, desenvolveram projetos próprios utilizando os robôs LEGO e realizaram a programação necessária para colocá-los em funcionamento.",
+    contents: [
+      {
+        title: "Manuais de montagem do LEGO EV3 - EV3 Lessons",
+        url: "https://ev3lessons.com/pt/RobotDesigns.html",
+      },
+    ]
+  },
+  {
+    id: "robotica-aula-extra",
     title: "Aula Extra - Lego/Robótica",
     description: "Nesta aula, os alunos usaram a criatividade e imaginação para montar os robôs LEGO.",
     contents: [

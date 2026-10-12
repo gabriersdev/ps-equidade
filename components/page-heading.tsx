@@ -69,7 +69,7 @@ export function PageHeading({title, subtitle, className = '', style, ...props}: 
         style={{color: 'var(--primary-color)', letterSpacing: "-0.5px", ...style}}
         {...props}
       >
-        {title}
+        {renderText(title)}
       </h1>
       {subtitle && <div className="mt-n1">{subtitle}</div>}
     </div>

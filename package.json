@@ -32,7 +32,7 @@
     "next": "16.4.0",
     "react": "19.3.0",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.3",

@@ -23,7 +23,7 @@ export function HeaderDesktopNav({ items, pathname }: HeaderDesktopNavProps) {
             <Link
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              className={`relative inline-flex items-center rounded-sm px-3 py-2 text-sm font-semibold transition-[transform,color,background-color] duration-100 ease-out active:scale-[0.97] ${
+              className={`relative inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold transition-[transform,color,background-color] duration-100 ease-out active:scale-[0.97] ${
                 isActive
                   ? "text-brand-tertiary"
                   : "text-brand-primary hover:bg-black/[0.04] hover:text-brand-tertiary"

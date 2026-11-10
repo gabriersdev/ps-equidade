@@ -15,7 +15,7 @@ export default function BaseCard({
   children,
 }: BaseCardProps) {
   return (
-    <article className="mb-4 rounded-md border border-black/10 bg-white px-5 py-6 sm:px-6">
+    <article className="mb-4 rounded-lg border border-black/10 bg-white px-5 py-6 sm:px-6">
       <div className="flex flex-col">
         <h2 className="font-display m-0 p-0 text-2xl font-semibold text-brand-secondary">
           {renderText(title)}

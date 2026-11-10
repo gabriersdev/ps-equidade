@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-black/60 sm:px-6 md:flex-row lg:px-8">
         <Link
           href="/"
-          className="text-small text-black/60 transition-[color,transform] duration-100 ease-out hover:text-brand-primary active:scale-[0.98]"
+          className="text-small rounded-sm text-black/60 transition-[color,transform] duration-100 ease-out hover:text-brand-primary active:scale-[0.98]"
         >
           {appConfigs["app-name"]} &copy; {new Date().getFullYear()}
         </Link>

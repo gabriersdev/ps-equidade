@@ -19,11 +19,13 @@ function assertNoHorizontalOverflow(contextLabel: string) {
 function assertHeaderIntegrity(isMobile: boolean) {
   cy.get("header").should("be.visible");
   cy.get("header nav a[href='/']").should("be.visible");
+  cy.get("header a[href='/student-page']").should("not.exist");
+  cy.contains("header a", /Área do aluno/i).should("not.exist");
 
   if (isMobile) {
     cy.get("header button[aria-controls='navbarContent']").should("be.visible");
   } else {
-    cy.get("header ul a").should("have.length", 4).each(($el) => {
+    cy.get("header ul a").should("have.length", 3).each(($el) => {
       cy.wrap($el).should("be.visible");
     });
   }
@@ -42,9 +44,11 @@ describe("UI & Responsive Audit", () => {
         const bodyFont = win.getComputedStyle(win.document.body).fontFamily;
         const h1 = win.document.querySelector("h1");
         const article = win.document.querySelector("article");
+        const cardLink = win.document.querySelector("article a");
         expect(bodyFont, "body font uses Inter").to.match(/Inter/i);
         expect(h1 ? win.getComputedStyle(h1).fontFamily : "", "h1 font uses Inter").to.match(/Inter/i);
-        expect(article ? win.getComputedStyle(article).borderRadius : "", "subtle card radius").to.equal("6px");
+        expect(article ? win.getComputedStyle(article).borderRadius : "", "subtle card radius").to.equal("8px");
+        expect(cardLink ? win.getComputedStyle(cardLink).borderRadius : "", "subtle class link radius").to.equal("6px");
       });
       assertHeaderIntegrity(vp.width < 1024);
       assertNoHorizontalOverflow(`/classes (${vp.name})`);
@@ -59,6 +63,8 @@ describe("UI & Responsive Audit", () => {
       .should("have.attr", "aria-expanded", "false")
       .click();
     cy.get("#navbarContent").should("be.visible");
+    cy.get("#navbarContent a").should("have.length", 3);
+    cy.get("#navbarContent a[href='/student-page']").should("not.exist");
     cy.wait(350);
     assertNoHorizontalOverflow("mobile menu open");
     cy.screenshot("mobile-menu-open", { capture: "viewport" });
@@ -75,6 +81,13 @@ describe("UI & Responsive Audit", () => {
     cy.get("section[role='status']").should("have.length.at.least", 1);
     cy.wait(450);
     assertNoHorizontalOverflow("alerts mobile");
+    cy.get("section[role='status']").first().then(($alert) => {
+      cy.window().then((win) => {
+        expect(win.getComputedStyle($alert[0]).borderRadius, "alert subtle radius").to.equal("8px");
+        const closeBtn = $alert[0].querySelector("button");
+        expect(closeBtn ? win.getComputedStyle(closeBtn).borderRadius : "", "alert close radius").to.equal("6px");
+      });
+    });
     cy.screenshot("alerts-mobile", { capture: "viewport" });
 
     cy.get("section[role='status']").first().find("button").click();
@@ -98,6 +111,26 @@ describe("UI & Responsive Audit", () => {
       cy.get("table").should("be.visible");
       cy.wait(450);
       assertNoHorizontalOverflow(`/calendar list (${vp.name})`);
+      cy.contains("span", "horário extendido").then(($badge) => {
+        cy.window().then((win) => {
+          expect(win.getComputedStyle($badge[0]).borderRadius, "extended badge radius").to.equal("6px");
+        });
+      });
+      cy.contains("span", "aula extra").then(($badge) => {
+        cy.window().then((win) => {
+          expect(win.getComputedStyle($badge[0]).borderRadius, "extra badge radius").to.equal("6px");
+        });
+      });
+      cy.contains("button", "Salvar calendário na agenda").then(($btn) => {
+        cy.window().then((win) => {
+          expect(win.getComputedStyle($btn[0]).borderRadius, "save calendar button radius").to.equal("6px");
+        });
+      });
+      cy.contains("button", "Baixar calendário").then(($btn) => {
+        cy.window().then((win) => {
+          expect(win.getComputedStyle($btn[0]).borderRadius, "download calendar button radius").to.equal("6px");
+        });
+      });
       cy.get("table").then(($table) => {
         const wrapper = $table.parent()[0];
         expect(
@@ -114,8 +147,31 @@ describe("UI & Responsive Audit", () => {
       cy.contains("h2", /2026/i).should("be.visible");
       cy.get("table thead th").should("have.length", 7);
       cy.wait(350);
+      cy.window().then((win) => {
+        const toggleGroup = win.document.querySelector("[role='group']");
+        const toggleButtons = win.document.querySelectorAll("[role='group'] button");
+        const tableButtons = Array.from(win.document.querySelectorAll("button")).filter((btn) =>
+          ["Anterior", "Próximo"].includes(btn.textContent?.trim() || "")
+        );
+        const eventChip = win.document.querySelector("table button");
+        expect(toggleGroup ? win.getComputedStyle(toggleGroup).borderRadius : "", "toggle group radius").to.equal("8px");
+        toggleButtons.forEach((btn) => {
+          expect(win.getComputedStyle(btn).borderRadius, "toggle button radius").to.equal("6px");
+        });
+        tableButtons.forEach((btn) => {
+          expect(win.getComputedStyle(btn).borderRadius, "month nav button radius").to.equal("6px");
+        });
+        if (eventChip) {
+          expect(win.getComputedStyle(eventChip).borderRadius, "event chip radius").to.equal("6px");
+        }
+      });
       assertNoHorizontalOverflow(`/calendar table (${vp.name})`);
       cy.screenshot(`calendar-table-${vp.name}`, { capture: "viewport" });
+      if (vp.name === "desktop") {
+        cy.contains("button", "Salvar calendário na agenda").scrollIntoView();
+        cy.wait(150);
+        cy.screenshot("calendar-buttons-desktop", { capture: "viewport" });
+      }
     });
   });
 
@@ -146,7 +202,16 @@ describe("UI & Responsive Audit", () => {
     cy.screenshot("calendar-tooltip-desktop", { capture: "viewport" });
   });
 
-  it("audits /class/[slug], /resources, /student-page, and 404", () => {
+  it("audits /class/[slug], /resources, hidden student-page, and 404", () => {
+    cy.request({
+      method: "POST",
+      url: "/api/login",
+      body: { username: "Joao Silva", password: "15032010" },
+      failOnStatusCode: false,
+    })
+      .its("status")
+      .should("eq", 404);
+
     [
       { name: "mobile", width: 375, height: 812 },
       { name: "desktop", width: 1440, height: 900 },
@@ -165,13 +230,11 @@ describe("UI & Responsive Audit", () => {
       assertNoHorizontalOverflow(`/resources (${vp.name})`);
       cy.screenshot(`resources-${vp.name}`, { capture: "viewport" });
 
-      cy.visit("/student-page");
-      cy.get("#student-user").type("Joao").blur();
-      cy.get("#student-user-error").should("be.visible");
-      cy.get("#student-password").type("15032010").should("have.value", "15 03 2010");
-      cy.wait(400);
+      cy.visit("/student-page", { failOnStatusCode: false });
+      cy.contains("#404").should("be.visible");
+      cy.get("#student-user").should("not.exist");
+      cy.wait(300);
       assertNoHorizontalOverflow(`/student-page (${vp.name})`);
-      cy.screenshot(`student-login-${vp.name}`, { capture: "viewport" });
 
       cy.visit("/rota-inexistente", { failOnStatusCode: false });
       cy.contains("#404").should("be.visible");

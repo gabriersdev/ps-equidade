@@ -29,7 +29,7 @@ export function PageHeading({
       >
         <Link
           href="/"
-          className="font-medium text-brand-primary transition-[color,transform] duration-100 ease-out hover:text-brand-tertiary active:scale-[0.97]"
+          className="rounded-sm font-medium text-brand-primary transition-[color,transform] duration-100 ease-out hover:text-brand-tertiary active:scale-[0.97]"
         >
           {breadcrumbTranslations["home"] || "Home"}
         </Link>
@@ -74,7 +74,7 @@ export function PageHeading({
               ) : (
                 <Link
                   href={href}
-                  className="font-medium text-brand-primary transition-[color,transform] duration-100 ease-out hover:text-brand-tertiary active:scale-[0.97]"
+                  className="rounded-sm font-medium text-brand-primary transition-[color,transform] duration-100 ease-out hover:text-brand-tertiary active:scale-[0.97]"
                 >
                   {label}
                 </Link>

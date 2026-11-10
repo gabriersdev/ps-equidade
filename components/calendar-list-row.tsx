@@ -34,7 +34,7 @@ export function CalendarListRow({
     eventClass && eventClass.contents.length > 0 ? (
       <Link
         href={`/class/${eventClass.date.split("/").reverse().join("")}`}
-        className="inline-flex items-center gap-1 font-medium text-brand-primary transition-[color,transform] duration-100 ease-out hover:text-brand-tertiary active:scale-[0.98]"
+        className="inline-flex items-center gap-1 rounded-sm font-medium text-brand-primary transition-[color,transform] duration-100 ease-out hover:text-brand-tertiary active:scale-[0.98]"
       >
         <span className="break-words">
           Acesse o conteúdo da aula <b>{eventClass.title}</b>
@@ -64,12 +64,12 @@ export function CalendarListRow({
             {renderText(event.title)}
           </span>
           {isExtended && (
-            <span className="text-small whitespace-nowrap rounded-sm border border-brand-tertiary/30 bg-brand-tertiary/10 px-2 py-0.5 font-normal text-brand-primary">
+            <span className="text-small whitespace-nowrap rounded-md border border-brand-tertiary/30 bg-brand-tertiary/10 px-2 py-0.5 font-normal text-brand-primary">
               horário extendido
             </span>
           )}
           {isExtraClass && (
-            <span className="text-small whitespace-nowrap rounded-sm border border-brand-notice/25 bg-brand-notice/10 px-2 py-0.5 font-normal text-brand-notice">
+            <span className="text-small whitespace-nowrap rounded-md border border-brand-notice/25 bg-brand-notice/10 px-2 py-0.5 font-normal text-brand-notice">
               aula extra
             </span>
           )}

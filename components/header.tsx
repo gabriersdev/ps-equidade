@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { dictionary } from "@/resources/dictionary";
+import { appConfigs } from "@/resources/resources";
 import { HeaderMobileMenu, type NavItem } from "@/components/header-mobile-menu";
 import { HeaderDesktopNav } from "@/components/header-desktop-nav";
 
@@ -12,7 +13,9 @@ const navItems: NavItem[] = [
   { label: dictionary.header.aulas, href: "/classes" },
   { label: dictionary.header.calendario, href: "/calendar" },
   { label: dictionary.header.resources, href: "/resources" },
-  { label: dictionary.header.areaDoAluno, href: "/student-page" },
+  ...(appConfigs.features.studentAreaEnabled
+    ? [{ label: dictionary.header.areaDoAluno, href: "/student-page" }]
+    : []),
 ];
 
 export function Header() {
@@ -51,7 +54,7 @@ export function Header() {
         <Link
           href="/"
           onClick={() => setIsMenuOpen(false)}
-          className="inline-flex flex-col items-start gap-1 transition-transform duration-100 ease-out active:scale-[0.97]"
+          className="inline-flex flex-col items-start gap-1 rounded-md transition-transform duration-100 ease-out active:scale-[0.97]"
         >
           <Image src="/logo-ps-geral-transparente.png" alt="Logo do Programa Sabará" width={80} height={45} className="object-cover" loading="eager" />
           <span className="text-small font-medium text-brand-tertiary">Equidade Racial</span>

@@ -61,7 +61,7 @@ export default async function ClassPage({
                 {renderText(aula.date)}
               </span>
               {isNextClass ? (
-                <span className="text-small inline-flex items-center rounded-sm border border-brand-tertiary/30 bg-brand-tertiary/10 px-2 py-0.5 font-medium text-brand-primary">
+                <span className="text-small inline-flex items-center rounded-md border border-brand-tertiary/30 bg-brand-tertiary/10 px-2 py-0.5 font-medium text-brand-primary">
                   próxima aula
                 </span>
               ) : null}

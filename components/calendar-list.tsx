@@ -9,7 +9,7 @@ interface CalendarListProps {
 
 export default function CalendarList({ events, currentDate }: CalendarListProps) {
   return (
-    <div className="mt-3 overflow-x-auto rounded-md border border-black/10 bg-white">
+    <div className="mt-3 overflow-x-auto rounded-lg border border-black/10 bg-white">
       <table className="w-full border-collapse text-left text-sm">
         <thead className="border-b border-black/10 bg-brand-canvas">
           <tr>

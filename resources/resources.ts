@@ -19,7 +19,10 @@ const appConfigs = {
   "timezone": "America/Sao_Paulo",
   "datetime-format": "YYYY-MM-DD HH:mm:ss",
   "UTC": -3,
-}
+  "features": {
+    studentAreaEnabled: false,
+  },
+};
 
 export {
   appConfigs,

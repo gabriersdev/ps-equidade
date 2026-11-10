@@ -45,7 +45,7 @@ export function CalendarEventChip({
         onFocus={() => setIsTooltipOpen(true)}
         onBlur={() => setIsTooltipOpen(false)}
         onClick={() => setIsTooltipOpen((prev) => !prev)}
-        className={`block w-full rounded-sm bg-brand-tertiary px-2 py-1.5 text-left text-white transition-[transform,background-color] duration-100 ease-out hover:bg-brand-primary active:scale-[0.97] ${isPast ? "opacity-50" : ""}`}
+        className={`block w-full rounded-md bg-brand-tertiary px-2 py-1.5 text-left text-white transition-[transform,background-color] duration-100 ease-out hover:bg-brand-primary active:scale-[0.97] ${isPast ? "opacity-50" : ""}`}
         style={{ fontSize: "0.875rem", lineHeight: 1.25 }}
       >
         <span className="flex items-center gap-1 font-bold">
@@ -69,7 +69,7 @@ export function CalendarEventChip({
             exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: offsetY, scale: 0.96 }}
             transition={prefersReducedMotion ? APPLE_REDUCED_TRANSITION : APPLE_SPRING_SNAPPY}
             style={{ transformOrigin }}
-            className={`apple-chrome-tooltip pointer-events-none absolute z-30 w-max max-w-[220px] rounded-sm border border-white/20 px-2.5 py-1.5 text-white ${horizontalPositionClass} ${preferBelow ? "top-full mt-1.5" : "bottom-full mb-1.5"}`}
+            className={`apple-chrome-tooltip pointer-events-none absolute z-30 w-max max-w-[220px] rounded-md border border-white/20 px-2.5 py-1.5 text-white ${horizontalPositionClass} ${preferBelow ? "top-full mt-1.5" : "bottom-full mb-1.5"}`}
           >
             <span className="text-small block text-balance font-sans">{renderText(event.title)}</span>
           </motion.div>

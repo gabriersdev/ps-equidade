@@ -1,20 +1,29 @@
 "use client";
 
-import Link from 'next/link'
-import {Button} from "react-bootstrap";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className={"min-vh-100 d-flex align-items-center justify-content-center flex-column gap-4"}>
-      <h1 className={"d-none"}>#404 - Página não encontrada!</h1>
-      <h2 className={"fw-semibold text-danger-emphasis m-0 p-0 d-flex flex-column align-items-center gap-1"} style={{letterSpacing: "-0.5px"}}>
-        <span className={"display-5"} style={{fontWeight: "inherit"}}>#404</span>
-        <span className={"display-6"} style={{fontWeight: "inherit"}}>Página não encontrada!</span>
+    <div className="flex min-h-[70vh] flex-col items-center justify-center gap-6 px-4 text-center">
+      <h1 className="sr-only">#404 - Página não encontrada!</h1>
+
+      <h2 className="font-display m-0 flex flex-col items-center gap-1 text-brand-secondary">
+        <span className="text-4xl font-semibold sm:text-5xl">#404</span>
+        <span className="text-2xl font-semibold sm:text-3xl">
+          Página não encontrada!
+        </span>
       </h2>
-      <p className={"m-0 p-0"}>A página ainda não existe ou o endereço não está correto.</p>
-      <Link href="/" passHref legacyBehavior>
-        <Button className={"rounded-1"}>Retornar para o início</Button>
+
+      <p className="m-0 max-w-md text-base leading-[1.6] text-brand-ink/85">
+        A página ainda não existe ou o endereço não está correto.
+      </p>
+
+      <Link
+        href="/"
+        className="inline-flex items-center justify-center rounded-md border border-brand-primary bg-brand-primary px-5 py-2.5 text-sm font-medium text-white transition-[transform,background-color,border-color] duration-100 ease-out hover:border-brand-tertiary hover:bg-brand-tertiary active:scale-[0.97]"
+      >
+        Retornar para o início
       </Link>
     </div>
-  )
+  );
 }

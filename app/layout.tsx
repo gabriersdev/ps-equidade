@@ -1,16 +1,26 @@
-import type {Metadata} from "next";
-import {appConfigs} from "@/resources/resources";
-import {Inter} from "next/font/google";
-import {Header} from "@/components/header";
-import {Footer} from "@/components/footer";
-import {BootstrapClient} from "@/components/bootstrap-client";
-import "./globals.css";
+import type { Metadata } from "next";
 import React from "react";
+import { Momo_Trust_Display, Momo_Trust_Sans } from "next/font/google";
+import { appConfigs } from "@/resources/resources";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import AlertInfo from "@/components/alert-info";
+import { MotionProvider } from "@/components/motion-provider";
+import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const momoSans = Momo_Trust_Sans({
   subsets: ["latin"],
+  variable: "--font-momo-sans",
+  display: "swap",
+  adjustFontFallback: false,
+});
+
+const momoDisplay = Momo_Trust_Display({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-momo-display",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -22,21 +32,22 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable}`}>
-    <body className="d-flex flex-column min-vh-100">
-    <Header/>
-    <main className="container py-4 flex-grow-1">
-      <AlertInfo/>
-      {children}
-    </main>
-    <Footer/>
-    <BootstrapClient/>
-    </body>
+    <html lang="pt-BR" className={`${momoSans.variable} ${momoDisplay.variable}`}>
+      <body className="flex min-h-screen flex-col bg-brand-canvas font-sans text-brand-ink antialiased">
+        <MotionProvider>
+          <Header />
+          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8">
+            <AlertInfo />
+            {children}
+          </main>
+          <Footer />
+        </MotionProvider>
+      </body>
     </html>
   );
 }

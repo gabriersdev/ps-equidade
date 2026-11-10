@@ -1,46 +1,151 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Momo+Trust+Display&family=Momo+Trust+Sans:wght@200..800&display=swap');
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import "tailwindcss";
 @import "../style/styles.css";
 
-@import "../style/bootstrap-overrides.css";
-:root {
-    /* Colors */
-    --primary-color: #00470D;
-    --secondary-color: #CC0202;
-    --tertiary-color: #00941C;
-    --quaternary-color: #46B55B;
-    --black-color: #010101;
-    --white-color: #F6F6F6;
+@theme inline {
+  --color-brand-primary: #00470D;
+  --color-brand-secondary: #CC0202;
+  --color-brand-tertiary: #00941C;
+  --color-brand-quaternary: #46B55B;
+  --color-brand-ink: #010101;
+  --color-brand-canvas: #F6F6F6;
+  --color-brand-notice: #123597;
+  --font-sans: var(--font-momo-sans), "Momo Trust Sans", Arial, Helvetica, sans-serif;
+  --font-display: var(--font-momo-display), "Momo Trust Display", var(--font-momo-sans), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-momo-sans), ui-monospace, SFMono-Regular, monospace;
 }
 
-body {
+:root {
+  --primary-color: #00470D;
+  --secondary-color: #CC0202;
+  --tertiary-color: #00941C;
+  --quaternary-color: #46B55B;
+  --black-color: #010101;
+  --white-color: #F6F6F6;
+}
+
+@layer base {
+  html {
+    font-size: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
     background-color: var(--white-color);
     color: var(--black-color);
-}
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
 
-h1, h2, h3, h4, h5, h6, .navbar-brand {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: var(--black-color);
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+
+  h1 {
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  h2,
+  h3 {
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  h4,
+  h5,
+  h6 {
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  button,
+  a,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+    font-family: inherit;
+  }
+
+  button,
+  a {
+    box-shadow: none;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--tertiary-color);
+    outline-offset: 2px;
+  }
+
+  button:focus:not(:focus-visible),
+  a:focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
-/* Base custom styles based on requirements */
-.text-primary-custom {
-    color: var(--primary-color);
+.apple-chrome-header {
+  background-color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
-.text-secondary-custom {
-    color: var(--secondary-color);
+.apple-chrome-panel {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
 
-.bg-primary-custom {
-    background-color: var(--primary-color);
+.apple-chrome-tooltip {
+  background-color: rgba(1, 1, 1, 0.92);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
 }
 
-.bg-secondary-custom {
-    background-color: var(--secondary-color);
+@media (prefers-reduced-transparency: reduce) {
+  .apple-chrome-header,
+  .apple-chrome-panel {
+    background-color: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .apple-chrome-tooltip {
+    background-color: #010101;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
-/* Removing excessive rounded corners as requested */
-button, a {
-    border-radius: 0 !important;
-    box-shadow: none !important;
+@media (prefers-contrast: more) {
+  .apple-chrome-header,
+  .apple-chrome-panel {
+    background-color: #ffffff;
+    border-color: #010101;
+  }
+
+  .apple-chrome-tooltip {
+    background-color: #010101;
+    border-color: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 150ms !important;
+  }
 }

@@ -1,7 +1,9 @@
-import {Metadata} from 'next';
+import type { Metadata } from "next";
+import React from "react";
+import { dictionary } from "@/resources/dictionary";
 
 export const metadata: Metadata = {
-  title: 'Calendário',
+  title: dictionary.calendario.title,
 };
 
 export default function CalendarLayout({

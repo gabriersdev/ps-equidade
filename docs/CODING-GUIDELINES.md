@@ -5,9 +5,9 @@ Este documento fornece diretrizes de codificação para o projeto.
 ## Nomenclatura de Arquivos
 
 - Utilize sempre que possível os nomes dos arquivos em inglês US.
-- Componentes: `lower-case.tsx` (ex: `lower-case.jsx`)
+- Componentes: `lower-case.tsx` (ex: `lower-case.tsx`)
 - Estilos: `kebab-case.css` (ex: `my-component.css`)
-- Utilitários: `lower-case.ts` (ex: `utility.js`)
+- Utilitários: `lower-case.ts` (ex: `utility.ts`)
 
 ## Organização de Arquivos
 
@@ -33,26 +33,31 @@ Este documento fornece diretrizes de codificação para o projeto.
 - Siga as diretrizes de nomenclatura de arquivos.
 - Adicione testes para novos recursos (testes de componentes usando o `cypress`) OU no caso de novas páginas criadas, criar testes de componentes de páginas (com `e2e` e usando `cypress`).
 
-## Observações:
+## Interface, Estilização e Movimento
 
-- Para criar um componente deve-se sempre que possível usar componentes do React Bootstrap ou do próprio Bootstrap, que é o que o projeto usa como UI.
-- Utilizar sempre que for possível as classes que já vem no Bootstrap para criar componentes.
-- Evitar o máximo possível, de criar classes personalizadas, sempre optando pelas classes que já vem com o Bootstrap.
-- Para o caso de uma estilização como Flexbox ou Grid, criar um componente que centralize estes estilos.
-- Optar sempre por quebrar os grandes componentes (PRINCIPALMENTE aqueles com mais de 100 linhas) em outros componentes, e, importar estes no componente "pai" que antes continha o código deles.
-- Seguir a risca os padrões de código, a arquitetura usada dentre outros critérios aqui definidos para criar um código sempre uniforme e coeso, de acordo com aqueles que já existiam.
-- Usar sempre que possível, use `const` para definir uma nova variável.
-- Usar a palavra reservada `function` em vez de `const` para criar uma nova função.
-- Optar por sempre usar os `hooks` do `React` para definir dados e otimizar o funcionamento e execução do código.
-- Optar por sempre utilizar `libs` já existentes para projetos `React`, desde que essas sejam perfomáticas, coesas, bem documentadas e já conhecidas no meio de desenvolvimento `front-end`.
-- Para situações que for necessário iterar sobre um array de valores estáticos, faça a criação um arquivo a parte, em `resources`, seguindo o [padrão de nomenclatura definidos](#nomenclatura-de-arquivos), utilizando a linguagem `typescript`, além de tipar as estruturas de dados.
-- Desenvolver pensando sempre no "padrão de desenvolvimento" `clean code` e em criar componentes performáticos, usando padrões já conhecidos, como a iteração, evitar duplicidade de código (componentização/criação de arquivos em `utils`),
-- Documentar os blocos de códigos mais complexos, que usarem de recursos pouco conhecidos ou que tenham lógica invertida (fora do fluxo: verificação se `true`, execução do bloco E verificação de `elseif`, execução do bloco OU verificação de `else` OU `easy return`) ou que dependem da ação de outro componente, arquivo ou código, que não é explícita (por exemplo, no caso de algum componente depender de uma ação em outro via DOM, sendo que esta dependência não seja clara).
-- Evitar a "poluição visual do código", quando há comentários de documentação excessivos (sempre avalie a necessidade do comentário e a utilidade dele no futuro).
-- Evitar, sempre que possível, fazer um código com complexidade muito alta (complexidade de algorítmo O(n), O(n²), dentre outros).
-- Evitar, sempre que possível, múltipas renderizações, seja `refresh` de página ou uso de intervalos para execução de blocos de códigos.
-- Evitar, sempre que possível, desenvolver `loops` pesados, que, para funcionar precisam da execução de outros loops ou de requisições externas (seja à `APIs` ou banco de dados).
-- Utilize sempre que possível os nomes dos componentes e variáveis em inglês US.
+- **Framework CSS:** Utilize exclusivamente **Tailwind CSS v4** com os tokens de marca definidos via `@theme inline` em `app/globals.css` (`brand-primary`, `brand-secondary`, `brand-tertiary`, `brand-quaternary`, `brand-ink`, `brand-canvas`, `brand-notice`).
+- **Identidade Visual Flat e Arredondamento Fino:** Mantenha ausência total de sombras (`box-shadow`) e evite arredondamentos exagerados. Utilize arredondamento fino e concêntrico (`rounded-sm` de 4px em badges, chips, links de ação e controles internos; `rounded-md` de 6px em cartões, avisos, inputs, wrappers de tabela e botões principais), além de translucidez sutil apenas em superfícies flutuantes funcionais (`.apple-chrome-header`, `.apple-chrome-panel`, `.apple-chrome-tooltip`).
+- **Tipografia (`next/font/google`):** Toda a interface utiliza `Momo Trust Sans` (`--font-momo-sans`) e títulos utilizam `Momo Trust Display` (`--font-momo-display`) configurados em `app/layout.tsx` e `@theme inline` de `app/globals.css`, sem fallback para `Inter`.
+- **Ícones:** Utilize SVGs inline consistentes com o conjunto atual do projeto, evitando adicionar novas bibliotecas de ícones sem necessidade.
+- **Física e Interatividade (`framer-motion` + `libs/apple-motion.ts`):**
+  - Priorize feedback imediato no `pointerdown` (`active:scale-[0.97]` ou `[0.985]` com transição rápida de `100ms ease-out`) e `touch-action: manipulation` para eliminar atrasos de toque.
+  - Use *springs* interrompíveis (`APPLE_SPRING_DEFAULT` / `APPLE_SPRING_SNAPPY`) para transições de UI e `APPLE_SPRING_MOMENTUM` apenas após gestos com velocidade/momento (ex.: *swipe* em avisos ou calendário).
+  - Evite delays artificiais (`setTimeout`) no caminho de entrada/foco do usuário.
+  - Respeite sempre `prefers-reduced-motion`, `prefers-reduced-transparency` e `prefers-contrast` (incluindo `MotionProvider` com `reducedMotion="user"`).
+
+## Observações Gerais
+
+- Evitar ao máximo criar classes CSS personalizadas quando classes utilitárias do Tailwind CSS atenderem ao objetivo.
+- Optar sempre por quebrar grandes componentes (principalmente aqueles com mais de 100 linhas) em subcomponentes ou utilitários em `libs/`, importando-os no componente pai.
+- Seguir à risca os padrões de código e arquitetura definidos para manter o código uniforme e coeso.
+- Usar sempre que possível `const` para definir uma nova variável.
+- Usar a palavra reservada `function` em vez de `const` para criar uma nova função nomeada.
+- Optar sempre por usar os `hooks` do `React` para definir dados e otimizar o funcionamento e execução do código.
+- Para situações em que for necessário iterar sobre um array de valores estáticos, criar um arquivo à parte em `resources`, seguindo o [padrão de nomenclatura definido](#nomenclatura-de-arquivos), utilizando TypeScript e tipando as estruturas de dados.
+- Desenvolver pensando sempre em *clean code* e performance, evitando duplicidade de código e extraindo lógicas puras para `libs/`.
+- Documentar blocos de código complexos, regras não óbvias ou dependências de DOM, evitando comentários excessivos que poluam a leitura.
+- Evitar código com complexidade desnecessariamente alta, múltiplas renderizações ou loops pesados acoplados a efeitos externos.
+- Utilizar sempre que possível nomes de componentes, tipos, funções e variáveis em inglês US (`camelCase` e ponto e vírgula `;`).
 
 ## Metadados e SEO
 

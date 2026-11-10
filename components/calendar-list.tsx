@@ -1,64 +1,47 @@
-import {basicClasses as classes} from '@/resources/classes-data';
-import {renderText} from "@/libs/render-text";
-import Link from "next/link";
-import moment from 'moment';
-import {CalendarEvent} from '@/resources/calendar-events';
+import moment from "moment";
+import type { CalendarEvent } from "@/resources/calendar-events";
+import { CalendarListRow } from "@/components/calendar-list-row";
 
 interface CalendarListProps {
   events: CalendarEvent[];
   currentDate: moment.Moment | null;
 }
 
-export default function CalendarList({events, currentDate}: CalendarListProps) {
+export default function CalendarList({ events, currentDate }: CalendarListProps) {
   return (
-    <div className="table-responsive">
-      <table className="table table-striped table-hover mt-3 border">
-        <thead className="table-light">
-        <tr>
-          <th scope="col" style={{width: '150px'}}>Data</th>
-          <th scope="col" style={{width: '160px'}} className={"d-none d-md-table-cell"}>Horário</th>
-          <th scope="col">Assunto</th>
-          <th scope="col">Conteúdo</th>
-        </tr>
+    <div className="mt-3 overflow-x-auto rounded-md border border-black/15 bg-white">
+      <table className="w-full border-collapse text-left text-sm">
+        <thead className="border-b border-black/15 bg-brand-canvas">
+          <tr>
+            <th scope="col" className="w-[102px] whitespace-nowrap px-3 py-2.5 font-semibold text-brand-ink sm:w-[128px] lg:px-4 lg:py-3">
+              Data
+            </th>
+            <th
+              scope="col"
+              className="hidden whitespace-nowrap px-3 py-2.5 font-semibold text-brand-ink md:table-cell md:w-[132px] lg:px-4 lg:py-3"
+            >
+              Horário
+            </th>
+            <th scope="col" className="px-3 py-2.5 font-semibold text-brand-ink lg:px-4 lg:py-3">
+              Assunto
+            </th>
+            <th scope="col" className="hidden px-3 py-2.5 font-semibold text-brand-ink sm:table-cell lg:px-4 lg:py-3">
+              Conteúdo
+            </th>
+          </tr>
         </thead>
-        
-        <tbody>
-        {events.map((event, index, self) => {
-          const isPast = currentDate ? moment(event.date, 'DD/MM/YYYY').isBefore(currentDate, 'day') : false;
-          const eventClass = event.id ? classes.find(c => c.id === event.id) : null;
-          return (
-            <tr key={index}>
-              <td className="align-middle fw-bold" style={{opacity: isPast ? 0.5 : 1}}>{renderText(event.date)}</td>
-              <td className={"align-middle d-none d-md-table-cell"} style={{opacity: isPast ? 0.5 : 1}}>
-                {moment(`2020-01-01T${event.timeInit}`).format("HH:mm")} - {moment(`2020-01-01T${event.timeFinish}`).format("HH:mm")}
-              </td>
-              <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
-                <div className={"d-flex align-items-center gap-1 flex-wrap"}>
-                  {isPast ? <span className={"text-success"}><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="currentcolor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg></span> : <></>}
-                  <span className={"text-truncate"}>{renderText(event.title)}</span>
-                  {(moment(`2020-01-01T${event.timeFinish}`).diff(moment(`2020-01-01T${event.timeInit}`), "minutes") >= (60 * 2.5) && self.length - 1 !== index) && <span style={{paddingTop: "0.125rem", paddingBottom: "0.125rem"}} className={"bg-success-subtle fw-normal text-sm rounded-1 px-2 text-success"}>horário extendido</span>}
-                  {event.title.toLowerCase().includes("aula extra") ? (<span style={{paddingTop: "0.125rem", paddingBottom: "0.125rem", color: "#2631FF"}} className={"bg-primary-subtle fw-normal text-sm rounded-1 px-2"}>aula extra</span>) : ""}
-                </div>
-              </td>
-              <td className="align-middle" style={{opacity: isPast ? 0.5 : 1}}>
-                {eventClass && eventClass.contents.length > 0 ? (
-                  <Link
-                    href={`/class/${eventClass.date.split('/').reverse().join('')}`}
-                    className="link-primary gap-1 align-items-center text-decoration-none fw-medium text-ellipsis line-clamp-2"
-                  >
-                      <span className="text-break">
-                        Acesse o conteúdo da aula <b>{eventClass.title}</b>
-                      </span>
-                  </Link>
-                ) : (
-                  <span className="text-muted">-</span>
-                )}
-              </td>
-            </tr>
-          );
-        })}
+
+        <tbody className="divide-y divide-black/10">
+          {events.map((event, index) => (
+            <CalendarListRow
+              key={index}
+              event={event}
+              currentDate={currentDate}
+              isLast={index === events.length - 1}
+            />
+          ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

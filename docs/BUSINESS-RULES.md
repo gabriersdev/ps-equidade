@@ -8,16 +8,20 @@
   - Quaternária: Verde Médio Claro (`#46B55B`)
   - Texto e Títulos: Preto (`#010101`)
   - Fundo: Branco/Gelo (`#F6F6F6`)
+  - Avisos: Azul (`#123597`)
 - **Tipografia**:
-  - Texto geral: `Momo Trust Sans`
-  - Negrito e Títulos: `Momo Trust Display`
+  - Fonte global em todo o projeto: `Momo Trust Sans` via `next/font/google` (variável, peso ajustado por contexto, espaçamento neutro `0` e entrelinha confortável `1.6`), utilizada no corpo, menus, tabelas, formulários, botões, badges e tooltips.
+  - Títulos: `Momo Trust Display` via `next/font/google` (ajuste ótico proporcional ao tamanho, com *tracking* levemente negativo e entrelinha justa).
 - **Estilo de Componentes**:
-  - É expressamente proibido o uso de sombras (`box-shadow`) ou bordas excessivamente arredondadas (`border-radius`), priorizando um design mais "flat" e cantos retos.
+  - É expressamente proibido o uso de sombras (`box-shadow`) ou arredondamentos exagerados (*pill*/bolha), priorizando um design *flat* e limpo com arredondamento fino e discreto (`rounded-sm` 4px em itens compactos/internos e `rounded-md` 6px em contêineres, cartões, campos e botões principais).
+  - Camadas flutuantes (cabeçalho fixo, menu mobile e tooltips) utilizam translucidez sutil (`backdrop-filter`) e bordas finas para indicar hierarquia sem recorrer a sombras.
+  - A interface deve responder imediatamente ao toque/clique (`pointerdown`), usar transições físicas interrompíveis (*springs*) e respeitar as preferências do sistema (`prefers-reduced-motion`, `prefers-reduced-transparency`, `prefers-contrast`).
 
 ## Estrutura de Navegação Obrigatória
 A navegação deve sempre conter os itens:
 - Aulas
 - Calendário
+- Recursos
 - Área do aluno
 - Logo que redireciona para a home (`/`)
 
@@ -45,4 +49,4 @@ A navegação deve sempre conter os itens:
 ## Regras de Avisos (Alerts)
 - **Centralização de Avisos**: Todos os avisos da plataforma devem ser definidos e consumidos a partir do arquivo de recursos estáticos `resources/alerts-data.ts`, contendo o ID único, título, conteúdo e a data limite de exibição.
 - **Validade do Aviso**: Avisos com a data de validade (`datetimeMaxShow`) expirada em relação ao momento do acesso (`moment()`) são invalidados e não devem ser exibidos em nenhuma circunstância.
-- **Memorização de Ocultamento**: O usuário possui a capacidade de dispensar um aviso. Essa ação armazena o ID daquele aviso no `localStorage` do dispositivo e inibe a exibição deste em acessos futuros. O salvamento respeita obrigatoriamente a regra de nomenclatura de chaves no projeto.
+- **Memorização de Ocultamento**: O usuário possui a capacidade de dispensar um aviso (por botão de fechar ou gesto horizontal *swipe*). Essa ação armazena o ID daquele aviso no `localStorage` do dispositivo e inibe a exibição deste em acessos futuros. O salvamento respeita obrigatoriamente a regra de nomenclatura de chaves no projeto.

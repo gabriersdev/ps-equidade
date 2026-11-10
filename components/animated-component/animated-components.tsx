@@ -1,29 +1,31 @@
 "use client";
 
 import AnimatedComponent from "./animated-component";
-import {AnimatePresence} from "framer-motion";
-import {ReactNode} from "react";
+import { AnimatePresence } from "framer-motion";
+import type { ReactNode } from "react";
 
 interface AnimatedComponentsProps {
   children?: ReactNode;
 }
 
-const AnimatedComponents = ({children = <></>}: AnimatedComponentsProps) => {
-  return Array.isArray(children) ? children.map((child, key) => {
+export default function AnimatedComponents({
+  children = <></>,
+}: AnimatedComponentsProps) {
+  if (Array.isArray(children)) {
     return (
-      <AnimatePresence mode={"wait"} key={key}>
-        <AnimatedComponent>
-          {child}
-        </AnimatedComponent>
-      </AnimatePresence>
-    )
-  }) : (
-    <AnimatePresence mode={"wait"}>
-      <AnimatedComponent>
-        {children}
-      </AnimatedComponent>
-    </AnimatePresence>
-  )
-};
+      <>
+        {children.map((child, key) => (
+          <AnimatePresence mode="wait" key={key}>
+            <AnimatedComponent>{child}</AnimatedComponent>
+          </AnimatePresence>
+        ))}
+      </>
+    );
+  }
 
-export default AnimatedComponents;
+  return (
+    <AnimatePresence mode="wait">
+      <AnimatedComponent>{children}</AnimatedComponent>
+    </AnimatePresence>
+  );
+}

@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import {renderText} from "@/libs/render-text";
+import React, { type ReactNode } from "react";
+import { renderText } from "@/libs/render-text";
 
 interface BaseCardProps {
   title: ReactNode;
@@ -8,33 +8,36 @@ interface BaseCardProps {
   children?: ReactNode;
 }
 
-export default function BaseCard({ title, subtitle, description, children }: BaseCardProps) {
+export default function BaseCard({
+  title,
+  subtitle,
+  description,
+  children,
+}: BaseCardProps) {
   return (
-    <div className={"card px-3 py-4 rounded-1 mb-3"}>
-      <div className={"d-flex flex-column"}>
-        <h2 className="fs-3 m-0 p-0" style={{color: 'var(--secondary-color)', letterSpacing: "-0.5px"}}>
+    <article className="mb-4 rounded-lg border border-black/10 bg-white px-5 py-6 sm:px-6">
+      <div className="flex flex-col">
+        <h2 className="font-display m-0 p-0 text-2xl font-semibold text-brand-secondary">
           {renderText(title)}
         </h2>
         {subtitle && (
-          <div className={"d-flex align-items-center gap-1"}>
+          <div className="mt-1.5 flex flex-wrap items-center gap-2">
             {renderText(subtitle)}
           </div>
         )}
       </div>
-      
+
       {description && (
-        <div className={"mt-3"}>
-          <p className={"m-0 p-0 text-body"}>
+        <div className="mt-3">
+          <p className="m-0 p-0 text-base leading-[1.6] text-brand-ink/85">
             {renderText(description)}
           </p>
         </div>
       )}
-      
+
       {children && (
-        <div className="mt-3 pt-1 d-flex flex-column gap-2">
-          {children}
-        </div>
+        <div className="mt-4 flex flex-col gap-2 pt-1">{children}</div>
       )}
-    </div>
+    </article>
   );
 }

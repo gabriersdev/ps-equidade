@@ -1,84 +1,13 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.navbar-brand {
-    font-family: "Momo Trust Display", var(--font-inter), Arial, Helvetica, sans-serif;
-}
-
-.font-momo-sans {
-    font-family: "Momo Trust Sans", var(--font-inter), Arial, Helvetica, sans-serif;
-}
-
-.font-momo-display {
-    font-family: "Momo Trust Display", var(--font-inter), Arial, Helvetica, sans-serif;
-}
-
-body {
-    font-family: "Momo Trust Sans", var(--font-inter), Arial, Helvetica, sans-serif !important;
-}
-
 .font-inter {
-    font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
-.font-inter-tight {
-    font-family: "Inter Tight", var(--font-inter), Arial, Helvetica, sans-serif;
-}
-
-.text-sm, .text-small {
-    font-size: 13px !important;
-}
-
-/* Line Clamp Utilities */
-[class*="line-clamp-"] {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
-
-.line-clamp-1 {
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-}
-
-.line-clamp-2 {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-}
-
-.line-clamp-3 {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-}
-
-.line-clamp-4 {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-}
-
-.line-clamp-5 {
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
-}
-
-.line-clamp-w-200 {
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-    -webkit-box-orient: horizontal;
-    width: 200px;
-    max-width: 200px;
-    text-align: left !important;
-}
-
-.navbar-toggler {
-    border: 0;
-    padding: 0;
+.text-small {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
 }
 
 .bg-blue {
-    background-color: #123597;
+  background-color: #354E8A;
 }

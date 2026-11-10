@@ -9,7 +9,7 @@ export function renderText(text) {
       const part = parts[i];
       
       if (part === "Atenção," || part === "Atenção") {
-        if (i > 1 || (i === 1 && parts[0].trim() !== "")) elements.push(<span key={`br-${i}-#1`} className={"d-block my-2"}></span>);
+        if (i > 1 || (i === 1 && parts[0].trim() !== "")) elements.push(<span key={`br-${i}-#1`} className={"block my-2"}></span>);
         elements.push(<span key={`atencao-${i}`}>{part}</span>);
       }
       

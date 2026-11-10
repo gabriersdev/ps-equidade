@@ -1,5 +1,6 @@
 import {cookies} from "next/headers";
 import {NextResponse} from "next/server";
+import {appConfigs} from "@/resources/resources";
 
 // Função para normalizar nome e sobrenome (ex: "Paulo Silva", "PAULO SILVA" -> "paulo.silva")
 const normalizeInputUsername = (name: string) => {
@@ -40,6 +41,13 @@ const isValidDateStr = (dateStr: string) => {
 };
 
 export async function POST(request: Request) {
+  if (!appConfigs.features.studentAreaEnabled) {
+    return NextResponse.json(
+      {success: false, message: "Recurso indisponível"},
+      {status: 404}
+    );
+  }
+
   try {
     const {username, password} = await request.json();
     

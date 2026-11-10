@@ -2,24 +2,28 @@
 
 ## Identidade Visual e UI
 - **Esquema de Cores**:
-  - Primária: Verde Escuro (`#00470D`)
-  - Secundária: Vermelho (`#CC0202`)
-  - Terciária: Verde Médio (`#00941C`)
-  - Quaternária: Verde Médio Claro (`#46B55B`)
-  - Texto e Títulos: Preto (`#010101`)
-  - Fundo: Branco/Gelo (`#F6F6F6`)
+  - Primária: Verde Sálvia Profundo (`#235C36`)
+  - Secundária: Vermelho Terracota Amenizado (`#B24B45`)
+  - Terciária: Verde Musgo Suave (`#3E7E54`)
+  - Quaternária: Verde Sálvia Claro (`#74A884`)
+  - Texto e Títulos: Grafite Escuro (`#1F2722`)
+  - Fundo: Gelo Suave (`#F5F7F5`)
+  - Avisos: Azul Ardósia (`#354E8A`)
 - **Tipografia**:
-  - Texto geral: `Momo Trust Sans`
-  - Negrito e Títulos: `Momo Trust Display`
+  - Fonte global em todo o projeto: **`Inter`** via `next/font/google` (`--font-inter`), aplicada ao corpo, títulos, menus, tabelas, formulários, botões, badges e tooltips (espaçamento neutro `0` e entrelinha confortável `1.6` no corpo; *tracking* levemente negativo e entrelinha justa nos títulos).
 - **Estilo de Componentes**:
-  - É expressamente proibido o uso de sombras (`box-shadow`) ou bordas excessivamente arredondadas (`border-radius`), priorizando um design mais "flat" e cantos retos.
+  - É expressamente proibido o uso de sombras (`box-shadow`) ou arredondamentos exagerados (*pill*/bolha), priorizando um design *flat* e limpo com arredondamento fino e concêntrico (`rounded-lg` 8px em contêineres, cartões, avisos e tabelas; `rounded-md` 6px em botões, badges, inputs, links de ação, chips e tooltips; `rounded-sm` 4px apenas em miniaturas internas de ícones).
+  - Camadas flutuantes (cabeçalho fixo, menu mobile e tooltips) utilizam translucidez sutil (`backdrop-filter`) e bordas finas para indicar hierarquia sem recorrer a sombras.
+  - A interface deve responder imediatamente ao toque/clique (`pointerdown`), usar transições físicas interrompíveis (*springs*) e respeitar as preferências do sistema (`prefers-reduced-motion`, `prefers-reduced-transparency`, `prefers-contrast`).
 
 ## Estrutura de Navegação Obrigatória
-A navegação deve sempre conter os itens:
+A navegação pública deve sempre conter os itens:
 - Aulas
 - Calendário
-- Área do aluno
+- Recursos
 - Logo que redireciona para a home (`/`)
+
+> **Área do aluno (Oculta):** Todos os elementos, links de navegação, página (`/student-page`) e endpoint (`POST /api/login`) relacionados à **Área do aluno** permanecem desativados/ocultos enquanto `appConfigs.features.studentAreaEnabled` for `false` em `resources/resources.ts`.
 
 ## Regras de Autenticação de Alunos
 - **Formato de Credenciais no Ambiente (.env)**:
@@ -45,4 +49,4 @@ A navegação deve sempre conter os itens:
 ## Regras de Avisos (Alerts)
 - **Centralização de Avisos**: Todos os avisos da plataforma devem ser definidos e consumidos a partir do arquivo de recursos estáticos `resources/alerts-data.ts`, contendo o ID único, título, conteúdo e a data limite de exibição.
 - **Validade do Aviso**: Avisos com a data de validade (`datetimeMaxShow`) expirada em relação ao momento do acesso (`moment()`) são invalidados e não devem ser exibidos em nenhuma circunstância.
-- **Memorização de Ocultamento**: O usuário possui a capacidade de dispensar um aviso. Essa ação armazena o ID daquele aviso no `localStorage` do dispositivo e inibe a exibição deste em acessos futuros. O salvamento respeita obrigatoriamente a regra de nomenclatura de chaves no projeto.
+- **Memorização de Ocultamento**: O usuário possui a capacidade de dispensar um aviso (por botão de fechar ou gesto horizontal *swipe*). Essa ação armazena o ID daquele aviso no `localStorage` do dispositivo e inibe a exibição deste em acessos futuros. O salvamento respeita obrigatoriamente a regra de nomenclatura de chaves no projeto.

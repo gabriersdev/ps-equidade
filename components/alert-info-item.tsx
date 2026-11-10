@@ -49,7 +49,7 @@ export function AlertInfoItem({ alert, onDismiss }: AlertInfoItemProps) {
             }
       }
       transition={prefersReducedMotion ? APPLE_REDUCED_TRANSITION : APPLE_SPRING_DEFAULT}
-      className="bg-brand-notice mb-4 flex flex-col gap-3 rounded-md border border-black/15 px-5 py-5 text-white select-none sm:px-6"
+      className="bg-brand-notice mb-4 flex flex-col gap-3 rounded-md border border-black/10 px-5 py-5 text-white select-none sm:px-6"
     >
       <div className="flex w-full items-center justify-between gap-2">
         <span className="text-small font-normal text-white/85">aviso</span>
@@ -68,7 +68,7 @@ export function AlertInfoItem({ alert, onDismiss }: AlertInfoItemProps) {
         </button>
       </div>
       <div className="flex flex-col gap-2 select-text">
-        <h2 className="font-display m-0 p-0 text-xl font-bold text-white sm:text-2xl">{renderText(alert.title)}</h2>
+        <h2 className="font-display m-0 p-0 text-xl font-semibold text-white sm:text-2xl">{renderText(alert.title)}</h2>
         <p className="m-0 p-0 text-base leading-[1.6] text-white/95">{renderText(alert.content)}</p>
       </div>
     </motion.section>

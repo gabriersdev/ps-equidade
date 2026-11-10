@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
-import { Momo_Trust_Display, Momo_Trust_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { appConfigs } from "@/resources/resources";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -8,19 +8,10 @@ import AlertInfo from "@/components/alert-info";
 import { MotionProvider } from "@/components/motion-provider";
 import "./globals.css";
 
-const momoSans = Momo_Trust_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-momo-sans",
+  variable: "--font-inter",
   display: "swap",
-  adjustFontFallback: false,
-});
-
-const momoDisplay = Momo_Trust_Display({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-momo-display",
-  display: "swap",
-  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -37,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${momoSans.variable} ${momoDisplay.variable}`}>
+    <html lang="pt-BR" className={inter.variable}>
       <body className="flex min-h-screen flex-col bg-brand-canvas font-sans text-brand-ink antialiased">
         <MotionProvider>
           <Header />

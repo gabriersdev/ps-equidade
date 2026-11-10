@@ -66,7 +66,7 @@ export default function CalendarTable({ events, currentDate }: CalendarViewProps
   const isDragEnabled = !prefersReducedMotion && canSwipeMonths;
 
   return (
-    <div className="mt-3 mb-6 rounded-md border border-black/15 bg-white p-4 sm:p-6">
+    <div className="mt-3 mb-6 rounded-md border border-black/10 bg-white p-4 sm:p-6">
       <div className="mb-4 flex items-center justify-between gap-2 sm:gap-3">
         <button type="button" onClick={prevMonth} disabled={isAtMin} className="rounded-sm border border-brand-primary bg-brand-primary px-2.5 py-1.5 text-small font-medium text-white transition-[transform,background-color,border-color,opacity] duration-100 ease-out hover:border-brand-tertiary hover:bg-brand-tertiary active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-45 sm:px-3">
           Anterior
@@ -74,11 +74,11 @@ export default function CalendarTable({ events, currentDate }: CalendarViewProps
         <h2 className="font-display m-0 text-center text-base font-semibold capitalize text-brand-primary sm:text-2xl">
           {currentMonth.format("MMMM YYYY")}
         </h2>
-        <button type="button" onClick={nextMonth} disabled={isAtMax} className="rounded-sm border border-brand-secondary bg-brand-secondary px-2.5 py-1.5 text-small font-medium text-white transition-[transform,background-color,border-color,opacity] duration-100 ease-out hover:border-[#A30202] hover:bg-[#A30202] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-45 sm:px-3">
+        <button type="button" onClick={nextMonth} disabled={isAtMax} className="rounded-sm border border-brand-secondary bg-brand-secondary px-2.5 py-1.5 text-small font-medium text-white transition-[transform,background-color,border-color,opacity] duration-100 ease-out hover:border-[#973D38] hover:bg-[#973D38] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-45 sm:px-3">
           Próximo
         </button>
       </div>
-      <div ref={scrollContainerRef} className="overflow-x-auto overflow-y-visible rounded-sm border border-black/15">
+      <div ref={scrollContainerRef} className="overflow-x-auto overflow-y-visible rounded-sm border border-black/10">
         <motion.div
           key={currentMonth.format("YYYY-MM")}
           drag={isDragEnabled ? "x" : false}

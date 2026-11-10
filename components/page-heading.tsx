@@ -85,7 +85,7 @@ export function PageHeading({
       </nav>
 
       <h1
-        className={`font-display mb-2 text-3xl font-bold text-brand-primary sm:text-4xl ${className}`}
+        className={`font-display mb-2 text-3xl font-semibold text-brand-primary sm:text-4xl ${className}`}
         style={style}
         {...props}
       >

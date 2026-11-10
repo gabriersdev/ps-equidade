@@ -49,18 +49,18 @@ export default function ClassCardLink({ content }: ClassCardLinkProps) {
       target="_blank"
       rel="noopener noreferrer"
       href={content.url}
-      className="group flex w-full items-center gap-3.5 rounded-sm border border-brand-primary bg-brand-primary px-4 py-3 text-left text-white transition-[transform,background-color,border-color] duration-100 ease-out hover:border-brand-tertiary hover:bg-brand-tertiary active:scale-[0.985]"
+      className="group flex w-full items-center gap-3.5 rounded-sm border border-brand-primary/20 bg-brand-tertiary/[0.06] px-4 py-3 text-left text-brand-ink transition-[transform,background-color,border-color] duration-100 ease-out hover:border-brand-tertiary/45 hover:bg-brand-tertiary/[0.12] active:scale-[0.985]"
     >
-      <div className="flex shrink-0 items-center justify-center">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-brand-tertiary/12 text-brand-primary transition-colors duration-100 group-hover:bg-brand-tertiary/20">
         {getFileIcon(content.type)}
       </div>
 
       <div className="flex min-w-0 flex-col items-start">
-        <span className="font-medium break-words leading-snug text-white">
+        <span className="font-medium break-words leading-snug text-brand-primary">
           {content.title}
         </span>
 
-        <div className="text-small mt-0.5 flex flex-wrap gap-2 text-white/75">
+        <div className="text-small mt-0.5 flex flex-wrap gap-2 text-brand-ink/65">
           <span>{content.type || "Link externo"}</span>
           {content.size && <span>{renderText(content.size)}</span>}
         </div>

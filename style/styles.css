@@ -1,9 +1,5 @@
-.font-momo-sans {
-  font-family: var(--font-momo-sans), "Momo Trust Sans", Arial, Helvetica, sans-serif;
-}
-
-.font-momo-display {
-  font-family: var(--font-momo-display), "Momo Trust Display", var(--font-momo-sans), Arial, Helvetica, sans-serif;
+.font-inter {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 .text-small {
@@ -13,5 +9,5 @@
 }
 
 .bg-blue {
-  background-color: #123597;
+  background-color: #354E8A;
 }

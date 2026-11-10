@@ -65,7 +65,7 @@ export function HeaderMobileMenu({
                     href={item.href}
                     onClick={onClose}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative flex items-center justify-between rounded-sm px-3 py-2.5 text-sm font-bold transition-[transform,background-color,color] duration-100 ease-out active:scale-[0.98] ${
+                    className={`relative flex items-center justify-between rounded-sm px-3 py-2.5 text-sm font-semibold transition-[transform,background-color,color] duration-100 ease-out active:scale-[0.98] ${
                       isActive
                         ? "bg-brand-tertiary/10 pl-4 text-brand-tertiary"
                         : "text-brand-primary hover:bg-black/[0.04] hover:text-brand-tertiary"

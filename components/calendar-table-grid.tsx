@@ -18,7 +18,7 @@ export function CalendarTableGrid({
 }: CalendarTableGridProps) {
   return (
     <table className="w-full min-w-[800px] table-fixed border-collapse bg-white text-center">
-      <thead className="border-b border-black/15 bg-brand-canvas">
+      <thead className="border-b border-black/10 bg-brand-canvas">
         <tr>
           {CALENDAR_WEEK_DAYS.map((dayName) => (
             <th

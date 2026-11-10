@@ -25,7 +25,7 @@ export function CalendarViewToggle({
     <div
       role="group"
       aria-label="Alternar visualização do calendário"
-      className="relative mb-3 grid grid-cols-2 rounded-md border border-black/15 bg-white p-1"
+      className="relative mb-3 grid grid-cols-2 rounded-md border border-black/10 bg-white p-1"
     >
       <motion.span
         aria-hidden="true"

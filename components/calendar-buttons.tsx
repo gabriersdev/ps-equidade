@@ -62,7 +62,7 @@ export default function CalendarButtons({ events }: CalendarButtonsProps) {
         type="button"
         onClick={handleDownloadPDF}
         disabled={isPDFLoading}
-        className="inline-flex items-center justify-center gap-2 rounded-md border border-brand-secondary bg-brand-secondary px-4 py-2.5 text-sm font-medium text-white transition-[transform,background-color,border-color,opacity] duration-100 ease-out hover:border-[#A30202] hover:bg-[#A30202] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex items-center justify-center gap-2 rounded-md border border-brand-secondary bg-brand-secondary px-4 py-2.5 text-sm font-medium text-white transition-[transform,background-color,border-color,opacity] duration-100 ease-out hover:border-[#973D38] hover:bg-[#973D38] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isPDFLoading ? (
           <>

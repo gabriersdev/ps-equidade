@@ -9,9 +9,9 @@ interface CalendarListProps {
 
 export default function CalendarList({ events, currentDate }: CalendarListProps) {
   return (
-    <div className="mt-3 overflow-x-auto rounded-md border border-black/15 bg-white">
+    <div className="mt-3 overflow-x-auto rounded-md border border-black/10 bg-white">
       <table className="w-full border-collapse text-left text-sm">
-        <thead className="border-b border-black/15 bg-brand-canvas">
+        <thead className="border-b border-black/10 bg-brand-canvas">
           <tr>
             <th scope="col" className="w-[102px] whitespace-nowrap px-3 py-2.5 font-semibold text-brand-ink sm:w-[128px] lg:px-4 lg:py-3">
               Data

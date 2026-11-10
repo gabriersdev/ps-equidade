@@ -42,8 +42,8 @@ describe("UI & Responsive Audit", () => {
         const bodyFont = win.getComputedStyle(win.document.body).fontFamily;
         const h1 = win.document.querySelector("h1");
         const article = win.document.querySelector("article");
-        expect(bodyFont, "body font uses Momo").to.match(/Momo/i);
-        expect(h1 ? win.getComputedStyle(h1).fontFamily : "", "h1 font uses Momo").to.match(/Momo/i);
+        expect(bodyFont, "body font uses Inter").to.match(/Inter/i);
+        expect(h1 ? win.getComputedStyle(h1).fontFamily : "", "h1 font uses Inter").to.match(/Inter/i);
         expect(article ? win.getComputedStyle(article).borderRadius : "", "subtle card radius").to.equal("6px");
       });
       assertHeaderIntegrity(vp.width < 1024);

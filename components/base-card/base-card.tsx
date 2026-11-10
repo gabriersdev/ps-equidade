@@ -15,9 +15,9 @@ export default function BaseCard({
   children,
 }: BaseCardProps) {
   return (
-    <article className="mb-4 rounded-md border border-black/15 bg-white px-5 py-6 sm:px-6">
+    <article className="mb-4 rounded-md border border-black/10 bg-white px-5 py-6 sm:px-6">
       <div className="flex flex-col">
-        <h2 className="font-display m-0 p-0 text-2xl font-bold text-brand-secondary">
+        <h2 className="font-display m-0 p-0 text-2xl font-semibold text-brand-secondary">
           {renderText(title)}
         </h2>
         {subtitle && (
@@ -29,7 +29,7 @@ export default function BaseCard({
 
       {description && (
         <div className="mt-3">
-          <p className="m-0 p-0 text-base leading-[1.6] text-brand-ink">
+          <p className="m-0 p-0 text-base leading-[1.6] text-brand-ink/85">
             {renderText(description)}
           </p>
         </div>

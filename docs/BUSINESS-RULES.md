@@ -2,16 +2,15 @@
 
 ## Identidade Visual e UI
 - **Esquema de Cores**:
-  - Primária: Verde Escuro (`#00470D`)
-  - Secundária: Vermelho (`#CC0202`)
-  - Terciária: Verde Médio (`#00941C`)
-  - Quaternária: Verde Médio Claro (`#46B55B`)
-  - Texto e Títulos: Preto (`#010101`)
-  - Fundo: Branco/Gelo (`#F6F6F6`)
-  - Avisos: Azul (`#123597`)
+  - Primária: Verde Sálvia Profundo (`#235C36`)
+  - Secundária: Vermelho Terracota Amenizado (`#B24B45`)
+  - Terciária: Verde Musgo Suave (`#3E7E54`)
+  - Quaternária: Verde Sálvia Claro (`#74A884`)
+  - Texto e Títulos: Grafite Escuro (`#1F2722`)
+  - Fundo: Gelo Suave (`#F5F7F5`)
+  - Avisos: Azul Ardósia (`#354E8A`)
 - **Tipografia**:
-  - Fonte global em todo o projeto: `Momo Trust Sans` via `next/font/google` (variável, peso ajustado por contexto, espaçamento neutro `0` e entrelinha confortável `1.6`), utilizada no corpo, menus, tabelas, formulários, botões, badges e tooltips.
-  - Títulos: `Momo Trust Display` via `next/font/google` (ajuste ótico proporcional ao tamanho, com *tracking* levemente negativo e entrelinha justa).
+  - Fonte global em todo o projeto: **`Inter`** via `next/font/google` (`--font-inter`), aplicada ao corpo, títulos, menus, tabelas, formulários, botões, badges e tooltips (espaçamento neutro `0` e entrelinha confortável `1.6` no corpo; *tracking* levemente negativo e entrelinha justa nos títulos).
 - **Estilo de Componentes**:
   - É expressamente proibido o uso de sombras (`box-shadow`) ou arredondamentos exagerados (*pill*/bolha), priorizando um design *flat* e limpo com arredondamento fino e discreto (`rounded-sm` 4px em itens compactos/internos e `rounded-md` 6px em contêineres, cartões, campos e botões principais).
   - Camadas flutuantes (cabeçalho fixo, menu mobile e tooltips) utilizam translucidez sutil (`backdrop-filter`) e bordas finas para indicar hierarquia sem recorrer a sombras.

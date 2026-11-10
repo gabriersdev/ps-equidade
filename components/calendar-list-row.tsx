@@ -69,7 +69,7 @@ export function CalendarListRow({
             </span>
           )}
           {isExtraClass && (
-            <span className="text-small whitespace-nowrap rounded-sm border border-[#2631FF]/25 bg-[#2631FF]/10 px-2 py-0.5 font-normal text-[#2631FF]">
+            <span className="text-small whitespace-nowrap rounded-sm border border-brand-notice/25 bg-brand-notice/10 px-2 py-0.5 font-normal text-brand-notice">
               aula extra
             </span>
           )}
